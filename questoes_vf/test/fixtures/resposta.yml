@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  proposicao: 
+  aluno: 
+  resposta: false
+  comentario: MyText
+  explicacao: MyText
+  ranking: 
+  data: 2013-03-14 16:47:31
+
+two:
+  proposicao: 
+  aluno: 
+  resposta: false
+  comentario: MyText
+  explicacao: MyText
+  ranking: 
+  data: 2013-03-14 16:47:31

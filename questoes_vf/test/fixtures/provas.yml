@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  professor_id: 
+  disciplina_id: 1
+  aula_id: 1
+  titulo: MyString
+  cabecalho: MyText
+  rodape: MyText
+  justificar_falsa: false
+  justificar_verdadeira: false
+  qtd_verdadeira_anula: 1
+  qtd_falsa_para_anular: 1
+  data_inicio: 2013-03-14
+  disponivel_data_inicio: 2013-03-14
+  disponivel_data_fim: 2013-03-14
+  duracao: 1
+
+two:
+  professor_id: 
+  disciplina_id: 1
+  aula_id: 1
+  titulo: MyString
+  cabecalho: MyText
+  rodape: MyText
+  justificar_falsa: false
+  justificar_verdadeira: false
+  qtd_verdadeira_anula: 1
+  qtd_falsa_para_anular: 1
+  data_inicio: 2013-03-14
+  disponivel_data_inicio: 2013-03-14
+  disponivel_data_fim: 2013-03-14
+  duracao: 1

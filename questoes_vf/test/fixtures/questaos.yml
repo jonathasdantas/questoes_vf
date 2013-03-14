@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  prova: 
+  enunciado: MyText
+  explicacao: MyText
+  visibilidade: false
+
+two:
+  prova: 
+  enunciado: MyText
+  explicacao: MyText
+  visibilidade: false
