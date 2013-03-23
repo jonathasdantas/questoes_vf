@@ -1,4 +1,12 @@
 QuestoesVf::Application.routes.draw do
+  get "relatorio/index"
+
+  get "professor/index"
+
+  get "prova/index"
+
+  get "estudante/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
