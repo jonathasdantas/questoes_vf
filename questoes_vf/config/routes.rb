@@ -1,11 +1,10 @@
 QuestoesVf::Application.routes.draw do
-  get "relatorio/index"
+  root :to => 'home#index'
 
-  get "professor/index"
-
-  get "prova/index"
-
-  get "estudante/index"
+  match 'estudante' => 'estudante#index'
+  match 'professor' => 'professor#index'
+  match 'prova' => 'prova#index'
+  match 'relatorio' => 'relatorio#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
