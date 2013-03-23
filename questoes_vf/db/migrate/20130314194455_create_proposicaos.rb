@@ -3,7 +3,7 @@ class CreateProposicaos < ActiveRecord::Migration
     create_table :proposicaos do |t|
       t.references :questao
       t.boolean :resposta
-      t.double :valor
+      t.decimal :valor
 
       t.timestamps
     end

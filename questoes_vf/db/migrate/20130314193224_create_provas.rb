@@ -1,7 +1,7 @@
 class CreateProvas < ActiveRecord::Migration
   def change
     create_table :provas do |t|
-      t.int :professor_id
+      t.integer :professor_id
       t.integer :disciplina_id
       t.integer :aula_id
       t.string :titulo
