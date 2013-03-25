@@ -1,14 +1,22 @@
 class ProvaController < ApplicationController
-  def index
-  end
+	def index # APENAS ESTUDANTE (FAZER A PROVA)
+	end
 
-  def visualizar
-  end
+	def new # GET
+	end
 
-  def criar
-  end
-  
+	def create # POST
+	end
 
-  def editar
-  end
+	def show
+	end
+
+	def edit # GET
+	end
+
+	def update # POST
+	end
+
+	def destroy
+	end
 end

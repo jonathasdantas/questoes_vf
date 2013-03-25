@@ -2,9 +2,9 @@ class RelatorioController < ApplicationController
   def index
   end
 
-  def relatorioTexto
+  def texto
   end
 
-  def relatorioExcel
+  def excel
   end
 end

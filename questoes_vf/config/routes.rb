@@ -1,10 +1,23 @@
 QuestoesVf::Application.routes.draw do
+
+  # Main Routes
   root :to => 'home#index'
 
-  resources :estudante
-  resources :professor
-  resources :prova
-  resources :relatorio
+  # Prova Routes
+  resources :prova, :except => [:show]
+  match 'prova/:id/estudante/:estudante_id' => 'prova#show'
+  match 'prova/:id/professor/:professor_id' => 'prova#show'
+
+  # Estudante Routes
+  match 'estudante/:id' => 'estudante#index'
+
+  # Professor Routes
+  match 'professor/:id' => 'professor#index'
+
+  # Relatório Routes
+  match 'relatorio' => 'relatorio#index'
+  match 'relatorio/texto' => 'relatorio#texto', :via => :post
+  match 'relatorio/excel' => 'relatorio#excel', :via => :post
 
 
   # The priority is based upon order of creation:
