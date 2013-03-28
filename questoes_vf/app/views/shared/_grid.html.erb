@@ -1,0 +1,20 @@
+<%= grid(@provas_grid, show_filters: :no) do |g|
+
+  g.blank_slate partial: "shared/empty_grid"
+
+  g.column name: 'Título', attribute: 'titulo'  do |prova|
+    prova.titulo
+  end
+
+  g.column name: 'Disponibilidade', attribute: 'disponivel_data_inicio'  do |prova|
+    prova.disponivel_data_inicio
+  end  
+
+  g.column name: 'Duração', attribute: 'duracao' do |prova|
+    prova.duracao
+  end
+
+  g.column name: 'Nota' do |prova|
+    prova.get_nota()
+  end
+end -%>
