@@ -3,6 +3,7 @@ class CreateProposicaos < ActiveRecord::Migration
     create_table :proposicaos do |t|
       t.references :questao
       t.boolean :resposta
+      t.text :texto
       t.timestamps
     end
     add_index :proposicaos, :questao_id

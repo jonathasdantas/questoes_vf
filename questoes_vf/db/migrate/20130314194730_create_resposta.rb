@@ -1,4 +1,4 @@
-class CreateResposta < ActiveRecord::Migration
+lass CreateResposta < ActiveRecord::Migration
   def change
     create_table :resposta do |t|
       t.references :proposicao
@@ -8,7 +8,6 @@ class CreateResposta < ActiveRecord::Migration
       t.text :explicacao
       t.decimal :ranking
       t.timestamp :data
-
       t.timestamps
     end
     add_index :resposta, :proposicao_id
