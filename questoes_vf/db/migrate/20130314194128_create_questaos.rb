@@ -5,7 +5,7 @@ class CreateQuestaos < ActiveRecord::Migration
       t.text :enunciado
       t.text :explicacao
       t.boolean :visibilidade
-
+      t.decimal :valor
       t.timestamps
     end
     add_index :questaos, :prova_id

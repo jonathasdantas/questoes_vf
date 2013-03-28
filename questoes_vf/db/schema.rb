@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20130314194730) do
   create_table "proposicaos", :force => true do |t|
     t.integer  "questao_id"
     t.boolean  "resposta"
-    t.decimal  "valor"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130314194730) do
     t.text     "enunciado"
     t.text     "explicacao"
     t.boolean  "visibilidade"
+    t.decimal  "valor"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
