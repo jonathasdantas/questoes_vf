@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def index 
+  def index
 	if params[:contexto] == 'estudante'
 		redirect_to '/estudante'
 	elsif params[:contexto] == 'professor'
