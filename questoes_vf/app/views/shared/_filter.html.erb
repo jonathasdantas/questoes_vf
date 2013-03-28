@@ -1,0 +1,14 @@
+<fieldset class="fieldset_filtro">
+  <legend>Filtros</legend>
+  <div id="filter">
+    <%= form_tag do %>
+      <span class="filter_title">Excluir Provas:</span>
+      <%= check_box_tag(:antigas) %>
+      <%= label_tag(:antigas, "Antigas") %>
+      <%= check_box_tag(:resolvidas) %>
+      <%= label_tag(:resolvidas, "Resolvidas") %>
+      <%= check_box_tag(:nao_comentadas) %>
+      <%= label_tag(:nao_comentadas, "Não comentadas") %>
+    <% end %>
+  </div>
+</fieldset>

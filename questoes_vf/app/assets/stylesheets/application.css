@@ -12,6 +12,58 @@
  *= require_tree .
 */
 
+body {
+	padding: 10px;
+}
+
+fieldset {
+	border-width: 2px;
+	padding: 5px 0px 0px 0px;
+}
+
+fieldset legend {
+	font-size: 18px;
+	color: Gray;
+}
+
+footer {
+	margin-top: 50px;
+	text-align: center;
+}
+
 #container {
 	width: 720px;
+}
+
+
+#welcome {
+	text-align: right;
+	margin: 50px 0px 20px 0px;
+}
+
+#welcome_text {
+	font-size: 25px;
+}
+
+#filter {
+	width: 100%;
+	height: 50px;
+}
+
+.fieldset_filtro {
+	margin-bottom: 30px;
+}
+
+.fieldset_filtro form {
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
+.fieldset_filtro form input {
+	margin-left: 20px;
+}
+
+.fieldset_filtro .filter_title {
+	font-size: 15px;
+	font-weight: bold;
 }
