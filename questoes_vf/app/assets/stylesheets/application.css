@@ -17,8 +17,9 @@ body {
 }
 
 fieldset {
-	border-width: 2px;
-	padding: 5px 0px 0px 0px;
+	border-width: 2px 0px 0px 0px;
+	border-color: rgb(255,255,255);
+	padding: 10px 0px 0px 0px;
 }
 
 fieldset legend {
@@ -51,6 +52,7 @@ footer {
 }
 
 .fieldset_filtro {
+	border-width: 2px;
 	margin-bottom: 30px;
 
 }
