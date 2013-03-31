@@ -1,0 +1,22 @@
+<%= grid(@provas_grid, show_filters: :no, allow_showing_all_records:  false) do |g|
+
+  g.blank_slate partial: "shared/empty_grid"
+
+  g.column name: 'Título', attribute: 'titulo' do |prova|
+    [prova.titulo, {style: 'width: 50%;'}]
+  end
+
+  g.column name: 'Disponibilidade', attribute: 'disponivel_data_inicio'  do |prova|
+    [content_tag(:p , content_tag(:strong, "Início: ") + prova.disponivel_data_inicio.strftime('%d/%m/%Y %H:%M')) +
+    content_tag(:strong, "Fim: ") + prova.disponivel_data_fim.strftime('%d/%m/%Y %H:%M'),
+    {style: 'width: 25%;'}]
+  end  
+
+  g.column name: 'Duração', attribute: 'duracao' do |prova|
+    [prova.duracao.to_s() + " mim", {style: 'width: 15%;'}]
+  end
+
+  g.column name: 'Média' do |prova|
+    [prova.get_media() == nil ? "?" : prova.get_media(), {style: 'width: 10%;'}]
+  end
+end -%>
