@@ -1,4 +1,4 @@
-lass CreateResposta < ActiveRecord::Migration
+class CreateResposta < ActiveRecord::Migration
   def change
     create_table :resposta do |t|
       t.references :proposicao
