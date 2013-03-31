@@ -6,7 +6,6 @@ lass CreateResposta < ActiveRecord::Migration
       t.boolean :resposta
       t.text :comentario
       t.text :explicacao
-      t.decimal :ranking
       t.timestamp :data
       t.timestamps
     end
