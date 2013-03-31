@@ -1,0 +1,27 @@
+<% @page_title ="Criar Comentarios" %>
+<div>
+<h2>Inserir Comentarios</h2>
+</div>
+
+<%= form_for :comentario, url: { action: :create } do |f| %>
+
+  <p>
+    <%= f.label :texto %><br>
+    <%= f.text_field :texto %>
+  </p>
+ 
+  <p>
+    <%= f.label :ranking %><br>
+  	<%= f.radio_button :ranking, ['1'] %>1
+  	<%= f.radio_button :ranking, ['2'] %>2
+  	<%= f.radio_button :ranking, ['3'] %>3
+  	<%= f.radio_button :ranking, ['4'] %>4
+  	<%= f.radio_button :ranking, ['5'] %>5
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Voltar', action: :create %>

@@ -1,5 +1,7 @@
 QuestoesVf::Application.routes.draw do
-
+  # Comentarios Routes
+  resources :comentario, :only => [:new, :create, :destroy]
+  
   # Main Routes
   root :to => 'home#index'
 

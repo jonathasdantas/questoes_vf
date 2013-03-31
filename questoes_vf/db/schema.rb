@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314194730) do
+ActiveRecord::Schema.define(:version => 20130331164030) do
 
   create_table "alunos", :force => true do |t|
     t.integer  "redu_id"
@@ -27,9 +27,22 @@ ActiveRecord::Schema.define(:version => 20130314194730) do
   add_index "alunos_provas", ["aluno_id", "prova_id"], :name => "index_alunos_provas_on_aluno_id_and_prova_id"
   add_index "alunos_provas", ["prova_id", "aluno_id"], :name => "index_alunos_provas_on_prova_id_and_aluno_id"
 
+  create_table "comentarios", :force => true do |t|
+    t.integer  "questao_id"
+    t.integer  "aluno_id"
+    t.text     "texto"
+    t.decimal  "ranking"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comentarios", ["aluno_id"], :name => "index_comentarios_on_aluno_id"
+  add_index "comentarios", ["questao_id"], :name => "index_comentarios_on_questao_id"
+
   create_table "proposicaos", :force => true do |t|
     t.integer  "questao_id"
     t.boolean  "resposta"
+    t.text     "texto"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -47,9 +60,9 @@ ActiveRecord::Schema.define(:version => 20130314194730) do
     t.boolean  "justificar_verdadeira"
     t.integer  "qtd_verdadeira_anula"
     t.integer  "qtd_falsa_para_anular"
-    t.date     "data_inicio"
-    t.date     "disponivel_data_inicio"
-    t.date     "disponivel_data_fim"
+    t.datetime "data_inicio"
+    t.datetime "disponivel_data_inicio"
+    t.datetime "disponivel_data_fim"
     t.integer  "duracao"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
@@ -73,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20130314194730) do
     t.boolean  "resposta"
     t.text     "comentario"
     t.text     "explicacao"
-    t.decimal  "ranking"
     t.datetime "data"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
