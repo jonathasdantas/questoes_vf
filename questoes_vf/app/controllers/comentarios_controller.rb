@@ -1,4 +1,4 @@
-class ComentarioController < ApplicationController
+class ComentariosController < ApplicationController
   def new
   	@comentario =  Comentario.new
   end

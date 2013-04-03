@@ -1,6 +1,6 @@
-class ProfessorController < ApplicationController
+class EstudantesController < ApplicationController
   def index
-  	filtro = Prova.do_professor(params[:id])
+  	filtro = Prova.do_aluno(params[:id])
 
   	if params[:antigas]
   		filtro = filtro.excluir_antigas

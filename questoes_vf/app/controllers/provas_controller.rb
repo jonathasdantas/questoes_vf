@@ -1,8 +1,9 @@
-class ProvaController < ApplicationController
+class ProvasController < ApplicationController
 	def index # APENAS ESTUDANTE (FAZER A PROVA)
 	end
 
 	def new # GET
+		@prova = Prova.new
 	end
 
 	def create # POST

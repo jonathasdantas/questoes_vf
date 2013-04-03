@@ -1,0 +1,47 @@
+<%= form_for @prova, :html => { :class => "form-horizontal" } do |f| %>
+
+	<div id="passo1">
+		<div class="control-group row">
+			<div class="control-label span2">
+				<%= f.label :titulo %>
+			</div>
+			<div class="controls span4">
+				<%= f.text_field :titulo, {:placeholder => "Digite o título da prova", :maxlength => 30} %>
+			</div>
+		</div>
+
+		<div class="control-group row">
+			<div class="control-label span2">
+				<%= f.label :cabecalho, 'Cabeçalho' %>
+			</div>
+			<div class="controls span4">
+				<%= f.text_field :cabecalho, :placeholder => "Digite o cabeçalho da prova" %>
+			</div>
+		</div>
+
+		<div class="control-group row">
+			<div class="control-label span2">
+				<%= f.label :rodape, 'Rodapé' %>
+			</div>
+			<div class="controls span4">
+				<%= f.text_field :rodape, :placeholder => "Digite o rodapé da prova" %>
+			</div>
+		</div>
+
+		<div class="control-group row">
+			<div class="control-label span2">
+				<%= f.label :duracao, 'Duração' %>
+			</div>
+			<div class="controls span4">
+				<%= f.text_field :duracao, { :placeholder => "Duração máxima da prova", :maxlength => 3 } %>
+			</div>
+		</div>
+	</div>
+
+	<div id="passo2">
+	</div>
+
+	<div id="passo3">
+	</div>
+
+<% end %>

@@ -1,25 +1,25 @@
 QuestoesVf::Application.routes.draw do
   # Comentarios Routes
-  resources :comentario, :only => [:new, :create, :destroy]
+  resources :comentarios, :only => [:new, :create, :destroy]
   
   # Main Routes
   root :to => 'home#index'
 
   # Prova Routes
-  resources :prova, :except => [:show]
-  match 'prova/:id/estudante/:estudante_id' => 'prova#show'
-  match 'prova/:id/professor/:professor_id' => 'prova#show'
+  resources :provas, :except => [:show]
+  match 'provas/:id/estudante/:estudante_id' => 'provas#show'
+  match 'provas/:id/professor/:professor_id' => 'provas#show'
 
   # Estudante Routes
-  match 'estudante/:id' => 'estudante#index'
+  match 'estudantes/:id' => 'estudantes#index'
 
   # Professor Routes
-  match 'professor/:id' => 'professor#index'
+  match 'professors/:id' => 'professors#index'
 
   # Relatório Routes
-  match 'relatorio' => 'relatorio#index'
-  match 'relatorio/texto' => 'relatorio#texto', :via => :post
-  match 'relatorio/excel' => 'relatorio#excel', :via => :post
+  match 'relatorios' => 'relatorios#index'
+  match 'relatorios/texto' => 'relatorios#texto', :via => :post
+  match 'relatorios/excel' => 'relatorios#excel', :via => :post
 
 
   # The priority is based upon order of creation:

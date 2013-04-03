@@ -1,4 +1,4 @@
-class RelatorioController < ApplicationController
+class RelatoriosController < ApplicationController
   def index
   end
 
