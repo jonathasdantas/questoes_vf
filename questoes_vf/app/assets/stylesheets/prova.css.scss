@@ -1,3 +1,46 @@
 // Place all the styles related to the prova controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table-condensed {
+	width: auto!important;
+}
+
+.table-condensed .next:hover, .table-condensed .prev:hover {
+	background-color: rgb(230, 230, 230)!important;
+}
+
+.datepicker {
+	right: auto!important;
+	border: none!important;
+}
+
+.icon-arrow-left {
+	display: block;
+	background: url(image_path('arrow_left.png')) 0 0 no-repeat;
+
+	width: 20px;
+	height: 20px;
+}
+
+.icon-arrow-right {
+	display: block;
+	background: url(image_path('arrow_right.png')) 0 0 no-repeat;
+
+	width: 20px;
+	height: 20px;
+}
+
+#form_container {
+	width: 100%;
+	padding: 20px 0px;
+	border-width: 2px;
+}
+
+#form_steps {
+	margin: 50px 0px 20px 0px;
+
+	float: left;
+	width: 520px;
+	height: 50px;
+}

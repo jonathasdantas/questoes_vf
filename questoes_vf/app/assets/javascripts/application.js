@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require_tree .
 //= require wice_grid.js
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR

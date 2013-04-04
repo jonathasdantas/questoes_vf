@@ -3,6 +3,21 @@
 	<div id="passo1">
 		<div class="control-group row">
 			<div class="control-label span2">
+				<%= f.label :disponivel_data_inicio, 'Disponível de' %>
+			</div>
+			<div class="controls span4" style="width: 88px">
+				<%= f.text_field :disponivel_data_inicio, :readonly => "" %>
+			</div>
+			<div class="control-label" style="margin-left: 13px">
+				<%= f.label :disponivel_data_fim, 'até' %>
+			</div>
+			<div class="controls span4" style="width: 88px; margin-left:13px">
+				<%= f.text_field :disponivel_data_fim, :readonly => "" %>
+			</div>
+		</div>
+
+		<div class="control-group row">
+			<div class="control-label span2">
 				<%= f.label :titulo %>
 			</div>
 			<div class="controls span4">
@@ -28,12 +43,47 @@
 			</div>
 		</div>
 
+		<div class="control-group row" style="margin-left: 25px">
+			<div class="controls span4" style="width: 50px">
+				<%= f.text_field :qtd_verdadeira_anula %>
+			</div>
+			<div class="control-label" style="margin-left: 17px">
+				<span>
+					alternativas erradas anulam
+				</span>
+			</div>
+			<div class="controls span4" style="width: 50px">
+				<%= f.text_field :qtd_falsa_para_anular %>
+			</div>
+			<div class="control-label" style="margin-left: 17px">
+				<span>
+					alternativas corretas
+				</span>
+			</div>
+		</div>
+
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :duracao, 'Duração' %>
 			</div>
 			<div class="controls span4">
 				<%= f.text_field :duracao, { :placeholder => "Duração máxima da prova", :maxlength => 3 } %>
+			</div>
+		</div>
+
+		<div class="control-group row">
+			<div class="control-label span2">
+				<label>Justificativas</label>
+			</div>
+			<div class="controls span4">
+				<%= f.label :justificar_falsa, :class => "control-checkbox" do %>
+					<%= f.check_box :justificar_falsa %>
+					Justificar Erradas
+				<% end %>
+				<%= f.label :justificar_verdadeira, :class => "control-checkbox" do %>
+					<%= f.check_box :justificar_verdadeira %>
+					Justificar Corretas
+				<% end %>
 			</div>
 		</div>
 	</div>

@@ -1,8 +1,8 @@
-<fieldset class="fieldset_filtro">
+<fieldset class="grid_filter_container">
   <legend>Filtros</legend>
-  <div id="filter">
+  <div id="grid_filter">
     <%= form_tag("", :method => "get") do %>
-      <span class="filter_title">Excluir Provas:</span>
+      <span>Excluir Provas:</span>
       <%= check_box_tag(:antigas, 1, params[:antigas] == "1" ? true : false) %>
       <%= label_tag(:antigas, "Antigas") %>
       <%= check_box_tag(:resolvidas, 1, params[:resolvidas] == "1" ? true : false) %>
