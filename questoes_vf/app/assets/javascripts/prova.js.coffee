@@ -4,9 +4,11 @@
 
 $(document).ready ->
 	$('#prova_disponivel_data_inicio').datepicker({
-		language: 'pt-BR'
+		language: 'pt-BR',
+		format: 'dd/mm/yyyy'
 	})
 	
 	$('#prova_disponivel_data_fim').datepicker({
-		language: 'pt-BR'
+		language: 'pt-BR',
+		format: 'dd/mm/yyyy'
 	})
