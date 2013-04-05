@@ -1,6 +1,6 @@
 <%= form_for @prova, :html => { :class => "form-horizontal" } do |f| %>
 
-	<div id="passo1">
+	<div id="passo1" data-background-position="0">
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :disponivel_data_inicio, 'Disponível de' %>
@@ -88,9 +88,11 @@
 		</div>
 	</div>
 
-	<div id="passo2">
+	<div id="passo2" data-background-position="-22">
+		#PASSO2
 	</div>
 
-	<div id="passo3">
+	<div id="passo3" data-background-position="-44">
+		#PASSO3
 	</div>
 <% end %>

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* DATE PICKER */
 .table-condensed {
 	width: auto!important;
 }
@@ -30,17 +31,10 @@
 	width: 20px;
 	height: 20px;
 }
+/* END DATE PICKER */
 
-#form_container {
-	width: 100%;
-	padding: 20px 0px;
-	border-width: 2px;
-}
 
-#form_container form {
-	margin-left: 50px;
-}
-
+/* CADASTRO NAV */
 #form_steps {
 	margin: 35px 0px 20px 0px;
 
@@ -49,7 +43,54 @@
 	height: 50px;
 }
 
-.next-button {
-	margin: 10px 0px;
+#form_steps nav {
+	background: url(image_path('passoapasso.png')) top no-repeat;
+	width: 506px;
+	height: 22px;
+}
+
+#form_steps nav #steps_titles a {
+	color: Gray;
+}
+
+#form_steps nav ul {
+	margin-left: 20px;
+	height: 15px;
+}
+
+#form_steps nav ul li {
+	float: left;
+}
+
+#form_steps nav ul .navMeio {
+	margin: 0px 168px 0px 176px;
+}
+/* CADASTRO NAV END */
+
+#form_container {
+	width: 99%;
+	height: 350px;
+	padding: 20px 0px;
+	border-width: 1px;
+}
+
+#form_container form {
+	margin-left: 50px;
+}
+
+#nav_buttons {
 	float: right;
+	margin: 10px 0px;
+}
+
+#nav_buttons a {
+	width: 80px;
+}
+
+.submit-button, .prev-button {
+	display: none;
+}
+
+#passo2, #passo3 {
+	display: none;
 }
