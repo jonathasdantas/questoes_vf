@@ -12,3 +12,6 @@ $(document).ready ->
 		language: 'pt-BR',
 		format: 'dd/mm/yyyy'
 	})
+
+	$('.submit-button').click ->
+		$('#new_prova').submit()

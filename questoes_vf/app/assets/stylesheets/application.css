@@ -29,8 +29,28 @@ fieldset legend {
 }
 
 footer {
+	clear: both;
 	margin-top: 50px;
 	text-align: center;
+}
+
+header {
+	margin-top: 20px;
+}
+
+header .logo a {
+	width: 250px;
+	height: 45px;
+}
+
+header .menu {
+	width: 450px;
+	float: right;
+}
+
+header .menu a {
+	width: 120px;
+	margin-right: 50px;
 }
 
 #container {
@@ -39,10 +59,11 @@ footer {
 
 
 #welcome {
+	clear: both;
 	width: 200px;
 	float: right;
 	text-align: right;
-	margin: 50px 0px 20px 0px;
+	margin: 35px 0px 20px 0px;
 }
 
 #welcome_text {

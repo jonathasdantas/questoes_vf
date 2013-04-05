@@ -6,7 +6,14 @@ class ProvasController < ApplicationController
 		@prova = Prova.new
 	end
 
-	def create # POST
+	def create
+		@prova = Prova.new(params[:prova])
+
+		if @prova.save
+			redirect_to '/professors/1'
+		else
+			render :new
+		end
 	end
 
 	def show
