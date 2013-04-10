@@ -5,4 +5,6 @@ class Questao < ActiveRecord::Base
   has_many :comentarios
   has_many :proposicaos
   belongs_to :prova
+
+  accepts_nested_attributes_for :proposicaos, allow_destroy: true
 end

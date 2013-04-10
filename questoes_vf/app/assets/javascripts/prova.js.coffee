@@ -13,6 +13,12 @@ $(document).ready ->
 		format: 'dd/mm/yyyy'
 	})
 
+	$('.questoes').treeview({
+		persist: "location",
+		collapsed: true,
+		unique: true
+	})
+
 	# Logica do botao avancar
 	$('.next-button').click ->
 		step = $(this).data('next-step')
