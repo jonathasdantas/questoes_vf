@@ -94,3 +94,8 @@
 #passo2, #passo3 {
 	display: none;
 }
+
+.questoes,.treeview{
+	height: 335px;
+	overflow-y: auto;
+}

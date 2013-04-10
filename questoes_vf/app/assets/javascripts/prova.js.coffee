@@ -14,7 +14,7 @@ $(document).ready ->
 	})
 
 	$('.questoes').treeview({
-		persist: "location",
+		animated: "fast",
 		collapsed: true,
 		unique: true
 	})
