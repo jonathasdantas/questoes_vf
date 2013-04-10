@@ -49,8 +49,17 @@ header {
 }
 
 header .logo a {
-	width: 250px;
-	height: 45px;
+	width: 145px;
+	height: 105px;
+	text-indent: -1000px;
+}
+
+header .logo_estudante {
+	background: url('/assets/logo_estudante.png') top no-repeat;
+}
+
+header .logo_professor {
+	background: url('/assets/logo_professor.png') top no-repeat;
 }
 
 header .menu {
@@ -62,6 +71,7 @@ header .menu {
 header .menu a {
 	width: 120px;
 	margin-right: 50px;
+	margin-top: 35px;
 }
 
 #container {
