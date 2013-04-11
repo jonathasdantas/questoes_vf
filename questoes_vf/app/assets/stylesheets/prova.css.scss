@@ -83,7 +83,7 @@
 	margin: 10px 0px;
 }
 
-#nav_buttons a {
+#nav_buttons a, input {
 	width: 80px;
 }
 
@@ -98,4 +98,34 @@
 .questoes {
 	height: 315px;
 	overflow-y: auto;
+}
+
+.remove_icon {
+	position: relative;
+	float: left;
+	width: 20px;
+	height: 20px;
+
+	cursor: hand;
+	cursor: pointer;
+
+	display: block;
+	background: url(image_path('icon_remove.png')) top no-repeat;
+}
+
+.remove_questao {
+	top: 2px;
+	left: 85px;
+}
+
+.remove_proposicao {
+	top: 13px;
+	left: 5px;
+}
+
+.required {
+	color: red;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: default;
 }

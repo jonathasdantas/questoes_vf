@@ -1,9 +1,21 @@
 <%= form_for @prova, :html => { :class => "form-horizontal" } do |f| %>
-
+	
 	<div id="passo1" data-background-position="0">
+		<% if @prova.errors.any? %>
+	    <div class="error_messages">
+	      <h2><%= pluralize(@prova.errors.count, "error") %> prohibited this prova from being saved:</h2>
+	      <ul>
+	      <% @prova.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :disponivel_data_inicio, 'Disponível de' %>
+				<span class="required" title="Campo obrigatório">*</span>
 			</div>
 			<div class="controls span4" style="width: 88px">
 				<%= f.text_field :disponivel_data_inicio, :readonly => "" %>
@@ -19,6 +31,7 @@
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :titulo %>
+				<span class="required" title="Campo obrigatório">*</span>
 			</div>
 			<div class="controls span4">
 				<%= f.text_field :titulo, {:placeholder => "Digite o título da prova", :maxlength => 30} %>
@@ -65,6 +78,7 @@
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :duracao, 'Duração' %>
+				<span class="required" title="Campo obrigatório">*</span>
 			</div>
 			<div class="controls span4">
 				<%= f.text_field :duracao, { :placeholder => "Duração máxima da prova", :maxlength => 3 } %>

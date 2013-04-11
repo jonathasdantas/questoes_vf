@@ -6,6 +6,20 @@ organizar_nomes = ->
 	$('.titulo_questao').each (i, elem) ->
 		$(elem).text("Questão " + (i + 1))
 
+check_required = (components) ->
+	ok = true
+
+	for elem in components
+		for _elem in elem
+			if elem.val() == ""
+				elem.parent().parent().addClass('control-error')
+				ok = false
+			else
+				elem.parent().parent().removeClass('control-error')
+	ok
+
+
+
 $(document).ready ->
 	$('#prova_disponivel_data_inicio').datepicker({
 		language: 'pt-BR',
@@ -17,21 +31,30 @@ $(document).ready ->
 		format: 'dd/mm/yyyy'
 	})
 
-	# Questãos
+	# Questões
 	$('.questoes').treeview({
 		animated: "fast",
 		collapsed: true,
 		unique: true
 	})
+	organizar_nomes();
 
+	$('form').on 'click', '.remove_icon', (event) ->
+		$($(this).parents('li')[0]).remove()
+		organizar_nomes();
 
 	$('form').on 'click', '.add_fields', (event) ->
 	    time = new Date().getTime()
 	    regexp = new RegExp($(this).data('id'), 'g')
-	    $(this).parent().siblings('ul').append($(this).data('fields').replace(regexp, time))
 
-	    $('.questoes').treeview({ animated: "fast", collapsed: true, unique: true })
-	    organizar_nomes()
+	    if $(this).parent().hasClass('add_questao')
+	    	$(this).parent().siblings('ul').append($(this).data('fields').replace(regexp, time))
+
+	    	$('.questoes').treeview({ animated: "fast", collapsed: true, unique: true })
+	    	organizar_nomes()
+	    else if $(this).parent().hasClass('controls')
+	    	element = $(this).parents('ul')[0]
+	    	$(element).append($(this).data('fields').replace(regexp, time))
 
 	    event.preventDefault()
 
@@ -40,21 +63,31 @@ $(document).ready ->
 		step = $(this).data('next-step')
 		next = parseInt(step.substr(6)) + 1
 
-		$(this).data('next-step', '#passo' + next)
-		$('.prev-button').data('next-step', '#passo' + (next - 2))
-		$('.prev-button').show()
+		if next == 3 && check_required([
+				$('#prova_disponivel_data_inicio'),
+				$('#prova_disponivel_data_fim'),
+				$('#prova_titulo'),
+				$('#prova_duracao')
+			]) || next == 4 && check_required([
+				$(":regex(id, #*_valor)"),
+				$(":regex(id, #*_enunciado)"),
+				$(":regex(id, #*_texto)")
+			])
+				$(this).data('next-step', '#passo' + next)
+				$('.prev-button').data('next-step', '#passo' + (next - 2))
+				$('.prev-button').show()
 
-		# Mostra o passo correto
-		$('#passo' + (next - 2)).hide()
-		$(step).show()
+				# Mostra o passo correto
+				$('#passo' + (next - 2)).hide()
+				$(step).show()
 
-		# Ajusta BG
-		$('#form_steps nav').css('background-position-y', $(step).data('background-position'))
+				# Ajusta BG
+				$('#form_steps nav').css('background-position-y', $(step).data('background-position'))
 
-		# Ultimo passo
-		if next == 4
-			$(this).hide()
-			$('.submit-button').show()
+				# Ultimo passo
+				if next == 4
+					$(this).hide()
+					$('.submit-button').show()
 
 	# Logica do botao voltar
 	$('.prev-button').click ->
@@ -80,4 +113,4 @@ $(document).ready ->
 
 	# Envia o formulario
 	$('.submit-button').click ->
-		$('#new_prova').submit()
+		$('#form_container').children('form').submit()

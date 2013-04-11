@@ -1,11 +1,13 @@
 <li>
 	<span class="titulo_questao">Questão 1</span>
+	<div class="remove_icon remove_questao"></div>
 	<ul>
 		<li>
 			<span>
 				<div class="control-group control-inline" style="margin-bottom:5px">
 				  <div class="control-label" style="margin-right:50px">
 				    <%= f.label :valor, "Valor" %>
+				    <span class="required" title="Campo obrigatório">*</span>
 				  </div>
 				  <div class="controls">
 				    <%= f.text_field :valor, { :placeholder => "Pontos da questão", :style => "width:150px" } %>
@@ -19,6 +21,7 @@
 				<div class="control-group control-inline">
 				  <div class="control-label" style="margin-right:20px">
 				    <%= f.label :enunciado, "Enunciado" %>
+				    <span class="required" title="Campo obrigatório">*</span>
 				  </div>
 				  <div class="controls">
 				  	<%= f.text_area :enunciado, { :placeholder => "Enunciado da questão", :style => "width:450px; height:70px; max-height:70px" } %>

@@ -2,5 +2,26 @@
   <%= render "shared/professor_header" %>
 <% end %>
 
-<h1>Prova#editar</h1>
-<p>Find me in app/views/prova/editar.html.erb</p>
+<div id="form_steps">
+	<nav>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul id="steps_titles">
+			<li><a href="#">Geral</a></li>
+			<li class="navMeio"><a href="#">Questões</a></li>
+			<li><a href="#">Resumo</a></li>
+		</ul>
+	</nav>
+</div>
+
+<fieldset id="form_container">
+	<%= render 'form' %>
+</fieldset>
+<div id="nav_buttons">
+	<a href="#" data-next-step="#passo1" class="button-default prev-button">Voltar</a>
+	<a href="#" data-next-step="#passo2" class="button-default next-button">Continuar</a>
+	<a href="#" class="button-success submit-button">Atualizar</a>
+</div>

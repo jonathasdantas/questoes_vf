@@ -19,10 +19,17 @@ class ProvasController < ApplicationController
 	def show
 	end
 
-	def edit # GET
+	def edit
+		@prova = Prova.find(params[:id])
 	end
 
-	def update # POST
+	def update
+		@prova = Prova.find(params[:id])
+	    if @prova.update_attributes(params[:prova])
+	      redirect_to '/professors/1'
+	    else
+	      render :edit
+    end
 	end
 
 	def destroy

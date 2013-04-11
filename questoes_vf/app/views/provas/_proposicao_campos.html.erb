@@ -2,21 +2,23 @@
 	<span>
 		<div class="control-group control-inline">
 		  	<div class="controls">
-			    <label class="control-radio">
-			    	<input type="radio" name="questao1" />
+			    <label class="control-radio" style="width:15px">
+			    	<%= f.radio_button :resposta, "true" %>
 			      	V
 			    </label>
-			    <label class="control-radio">
-			    	<input type="radio" name="questao1" />
+			    <label class="control-radio" style="width:15px">
+			    	<%= f.radio_button :resposta, "false" %>
 			    	F
 			    </label>
 			</div>
 			<div class="control-label" style="margin: 5px 20px">
 			    <%= f.label :texto, "Enunciado" %>
+			    <span class="required" title="Campo obrigatório">*</span>
 			</div>
 			<div class="controls" style="margin-top:5px">
 				<%= f.text_field :texto, { :placeholder => "Enunciado da proposição", :style => "width:356px" } %>
 			</div>
+			<div class="remove_icon remove_proposicao"></div>
 		</div>
 	</span>
 </li>
