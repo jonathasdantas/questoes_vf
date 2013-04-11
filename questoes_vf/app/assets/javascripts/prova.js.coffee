@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+organizar_nomes = ->
+	$('.titulo_questao').each (i, elem) ->
+		$(elem).text("Questão " + (i + 1))
+
 $(document).ready ->
 	$('#prova_disponivel_data_inicio').datepicker({
 		language: 'pt-BR',
@@ -13,11 +17,23 @@ $(document).ready ->
 		format: 'dd/mm/yyyy'
 	})
 
+	# Questãos
 	$('.questoes').treeview({
 		animated: "fast",
 		collapsed: true,
 		unique: true
 	})
+
+
+	$('form').on 'click', '.add_fields', (event) ->
+	    time = new Date().getTime()
+	    regexp = new RegExp($(this).data('id'), 'g')
+	    $(this).parent().siblings('ul').append($(this).data('fields').replace(regexp, time))
+
+	    $('.questoes').treeview({ animated: "fast", collapsed: true, unique: true })
+	    organizar_nomes()
+
+	    event.preventDefault()
 
 	# Logica do botao avancar
 	$('.next-button').click ->

@@ -1,0 +1,33 @@
+<li>
+	<span class="titulo_questao">Questão 1</span>
+	<ul>
+		<li>
+			<span>
+				<div class="control-group control-inline" style="margin-bottom:5px">
+				  <div class="control-label" style="margin-right:50px">
+				    <%= f.label :valor, "Valor" %>
+				  </div>
+				  <div class="controls">
+				    <%= f.text_field :valor, { :placeholder => "Pontos da questão", :style => "width:150px" } %>
+				    <%= link_to_add_fields "Adicionar Proposição", f, :proposicaos %>
+				  </div>
+				</div>
+			</span>
+		</li>
+		<li>
+			<span>
+				<div class="control-group control-inline">
+				  <div class="control-label" style="margin-right:20px">
+				    <%= f.label :enunciado, "Enunciado" %>
+				  </div>
+				  <div class="controls">
+				  	<%= f.text_area :enunciado, { :placeholder => "Enunciado da questão", :style => "width:450px; height:70px; max-height:70px" } %>
+				  </div>
+				</div>
+			</span>
+		</li>
+		<%= f.fields_for :proposicaos do |builder| %>
+			<%= render "proposicao_campos", f: builder %>
+		<% end %>
+	</ul>
+</li>

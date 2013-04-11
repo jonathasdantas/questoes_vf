@@ -22,6 +22,7 @@
 			var c1Elements = this.filter('.' + c1);
 			this.filter('.' + c2).removeClass(c2).addClass(c1);
 			c1Elements.removeClass(c1).addClass(c2);
+
 			return this;
 		},
 		replaceClass: function(c1, c2) {
@@ -60,6 +61,7 @@
 				// collapse whole tree, or only those marked as closed, anyway except those marked as open
 				this.filter((settings.collapsed ? "" : "." + CLASSES.closed) + ":not(." + CLASSES.open + ")").find(">ul").hide();
 			}
+
 			// return all items with sublists
 			return this.filter(":has(>ul)");
 		},
@@ -72,6 +74,13 @@
 			}).add( $("a", this) ).hoverClass();
 			
 			if (!settings.prerendered) {
+
+				if ( settings.unique ) {
+					$(this).siblings()
+						.replaceClass( CLASSES.collapsable, CLASSES.expandable )
+						.replaceClass( CLASSES.lastCollapsable, CLASSES.lastExpandable );
+				}
+
 				// handle closed ones first
 				this.filter(":has(>ul:hidden)")
 						.addClass(CLASSES.expandable)
@@ -81,9 +90,9 @@
 				this.not(":has(>ul:hidden)")
 						.addClass(CLASSES.collapsable)
 						.replaceClass(CLASSES.last, CLASSES.lastCollapsable);
-						
+				
 	            // create hitarea if not present
-				var hitarea = this.find("div." + CLASSES.hitarea);
+				/*var hitarea = this.find("div." + CLASSES.hitarea);
 				if (!hitarea.length)
 					hitarea = this.prepend("<div class=\"" + CLASSES.hitarea + "\"/>").find("div." + CLASSES.hitarea);
 				hitarea.removeClass().addClass(CLASSES.hitarea).each(function() {
@@ -92,14 +101,14 @@
 						classes += this + "-hitarea ";
 					});
 					$(this).addClass( classes );
-				})
+				})*/
 			}
 			
 			// apply event to hitarea
-			this.find("div." + CLASSES.hitarea).click( toggler );
+			//this.find("div." + CLASSES.hitarea).unbind("click.treeview").bind("click.treeview", toggler);
+			//this.find("div." + CLASSES.hitarea).click( toggler );
 		},
 		treeview: function(settings) {
-			
 			settings = $.extend({
 				cookieId: "treeview"
 			}, settings);
@@ -138,10 +147,10 @@
 				$(this)
 					.parent()
 					// swap classes for hitarea
-					.find(">.hitarea")
+					/*.find(">.hitarea")
 						.swapClass( CLASSES.collapsableHitarea, CLASSES.expandableHitarea )
 						.swapClass( CLASSES.lastCollapsableHitarea, CLASSES.lastExpandableHitarea )
-					.end()
+					.end()*/
 					// swap classes for parent li
 					.swapClass( CLASSES.collapsable, CLASSES.expandable )
 					.swapClass( CLASSES.lastCollapsable, CLASSES.lastExpandable )
@@ -163,6 +172,7 @@
 						.heightHide( settings.animated, settings.toggle );
 				}
 			}
+
 			this.data("toggler", toggler);
 			
 			function serialize() {
@@ -193,34 +203,34 @@
 			var branches = this.find("li").prepareBranches(settings);
 			
 			switch(settings.persist) {
-			case "cookie":
-				var toggleCallback = settings.toggle;
-				settings.toggle = function() {
-					serialize();
-					if (toggleCallback) {
-						toggleCallback.apply(this, arguments);
+				case "cookie":
+					var toggleCallback = settings.toggle;
+					settings.toggle = function() {
+						serialize();
+						if (toggleCallback) {
+							toggleCallback.apply(this, arguments);
+						}
+					};
+					deserialize();
+					break;
+				case "location":
+					var current = this.find("a").filter(function() {
+						return this.href.toLowerCase() == location.href.toLowerCase();
+					});
+					if ( current.length ) {
+						// TODO update the open/closed classes
+						var items = current.addClass("selected").parents("ul, li").add( current.next() ).show();
+						if (settings.prerendered) {
+							// if prerendered is on, replicate the basic class swapping
+							items.filter("li")
+								.swapClass( CLASSES.collapsable, CLASSES.expandable )
+								.swapClass( CLASSES.lastCollapsable, CLASSES.lastExpandable )
+								.find(">.hitarea")
+									.swapClass( CLASSES.collapsableHitarea, CLASSES.expandableHitarea )
+									.swapClass( CLASSES.lastCollapsableHitarea, CLASSES.lastExpandableHitarea );
+						}
 					}
-				};
-				deserialize();
-				break;
-			case "location":
-				var current = this.find("a").filter(function() {
-					return this.href.toLowerCase() == location.href.toLowerCase();
-				});
-				if ( current.length ) {
-					// TODO update the open/closed classes
-					var items = current.addClass("selected").parents("ul, li").add( current.next() ).show();
-					if (settings.prerendered) {
-						// if prerendered is on, replicate the basic class swapping
-						items.filter("li")
-							.swapClass( CLASSES.collapsable, CLASSES.expandable )
-							.swapClass( CLASSES.lastCollapsable, CLASSES.lastExpandable )
-							.find(">.hitarea")
-								.swapClass( CLASSES.collapsableHitarea, CLASSES.expandableHitarea )
-								.swapClass( CLASSES.lastCollapsableHitarea, CLASSES.lastExpandableHitarea );
-					}
-				}
-				break;
+					break;
 			}
 			
 			branches.applyClasses(settings, toggler);

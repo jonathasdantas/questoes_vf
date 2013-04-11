@@ -1,0 +1,22 @@
+<li>
+	<span>
+		<div class="control-group control-inline">
+		  	<div class="controls">
+			    <label class="control-radio">
+			    	<input type="radio" name="questao1" />
+			      	V
+			    </label>
+			    <label class="control-radio">
+			    	<input type="radio" name="questao1" />
+			    	F
+			    </label>
+			</div>
+			<div class="control-label" style="margin: 5px 20px">
+			    <%= f.label :texto, "Enunciado" %>
+			</div>
+			<div class="controls" style="margin-top:5px">
+				<%= f.text_field :texto, { :placeholder => "Enunciado da proposição", :style => "width:356px" } %>
+			</div>
+		</div>
+	</span>
+</li>
