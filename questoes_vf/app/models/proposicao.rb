@@ -1,5 +1,5 @@
 class Proposicao < ActiveRecord::Base
-  validates :resposta, :presence => true
+  validates_inclusion_of :resposta, :in => [true, false]
   validates :texto, :presence => true
   
   has_many :respostas

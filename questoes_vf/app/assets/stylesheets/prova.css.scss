@@ -95,9 +95,25 @@
 	display: none;
 }
 
+#passo3 {
+	width: 663px;
+	height: 350px;
+
+	overflow-y: auto;
+}
+
+#passo3 span, #passo3 label {
+	color: Gray;
+	font-size: 14px;
+}
+
 .questoes {
 	height: 315px;
 	overflow-y: auto;
+}
+
+.questoes .titulo_questao {
+	margin-left: -20px;
 }
 
 .remove_icon {
@@ -115,7 +131,7 @@
 
 .remove_questao {
 	top: 2px;
-	left: 85px;
+	left: 65px;
 }
 
 .remove_proposicao {

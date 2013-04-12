@@ -15,7 +15,7 @@
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :disponivel_data_inicio, 'Disponível de' %>
-				<span class="required" title="Campo obrigatório">*</span>
+				<span class="required" title="Campo obrigatório" rel="tooltip">*</span>
 			</div>
 			<div class="controls span4" style="width: 88px">
 				<%= f.text_field :disponivel_data_inicio, :readonly => "" %>
@@ -31,7 +31,7 @@
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :titulo %>
-				<span class="required" title="Campo obrigatório">*</span>
+				<span class="required" title="Campo obrigatório" rel="tooltip">*</span>
 			</div>
 			<div class="controls span4">
 				<%= f.text_field :titulo, {:placeholder => "Digite o título da prova", :maxlength => 30} %>
@@ -78,7 +78,7 @@
 		<div class="control-group row">
 			<div class="control-label span2">
 				<%= f.label :duracao, 'Duração' %>
-				<span class="required" title="Campo obrigatório">*</span>
+				<span class="required" title="Campo obrigatório" rel="tooltip">*</span>
 			</div>
 			<div class="controls span4">
 				<%= f.text_field :duracao, { :placeholder => "Duração máxima da prova", :maxlength => 3 } %>
@@ -114,6 +114,49 @@
 	</div>
 
 	<div id="passo3" data-background-position="-44">
-		#PASSO3
+		<h3>Geral</h3>
+		<br />
+		<label><strong>Título</strong> <span class="titulo_res"></span></label><br />
+		<label><strong>Cabeçalho</strong> <span class="cabecalho_res"></span></label><br />
+		<label><strong>Rodapé</strong> <span class="rodape_res"></span></label><br />
+		<label><span class="anula_errada_res"></span><strong> alternativas erradas anulam</strong> <span class="anula_correta_res">2</span><strong> alternativas corretas</strong></label><br />
+		<label><strong>Disponível de </strong> <span class="disponivel_inicio_res"></span> <strong>a </strong><span class="disponivel_fim_res"></span></label><br />
+		<label><strong>Duração</strong> <span class="duracao_res"></span><strong> mim</strong></label><br />
+		<label><strong>Justificar Errada</strong> <span class="justificar_errada_res"></span></label><br />
+		<label><strong>Justificar Correta</strong> <span class="justificar_correta_res"></span></label><br />
+		<br />
+		<h3>Questões</h3>
+		<br />
+		<input type="hidden" value='<li><span><div class="control-group control-inline"><div class="controls"><label class="control-radio" style="width:90px">#CHECK#</label></div><div class="control-label" style="margin: 1px 20px"><label>#ENUNCIADO_PROPOSICAO#</label></div></div></span></li>' class="proposicao_res" />
+		<input type="hidden" value='<li><span class="titulo_questao">Questão</span><ul><li><span>#ENUNCIADO_QUESTAO#<strong> (vale #VALOR# pontos)</strong></span></li>#PROPOSICAO#</ul></li>' class="questao_res" />
+		<ul class="questoes_res">
+			<!--<li>
+				<span>Questão</span>
+				<ul>
+					<li>
+						<span>#ENUNCIADO_QUESTAO# <strong> (#VALOR#)</strong></span>
+					</li>
+					<li>
+						<span>
+							<div class="control-group control-inline">
+								<div class="controls">
+									<label class="control-radio" style="width:15px">
+										<input type="radio" value="true" disabled #CHECK_V# />
+										V
+									</label>
+									<label class="control-radio" style="width:15px">
+										<input type="radio" value="false" disabled #CHECK_F# />
+										F
+									</label>
+								</div>
+								<div class="control-label" style="margin: 5px 20px">
+									<label>#ENUNCIADO_PROPOSICAO#</label>
+								</div>
+							</div>
+						</span>
+					</li>
+				</ul>
+			</li>-->
+		</ul>
 	</div>
 <% end %>
