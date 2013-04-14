@@ -191,3 +191,68 @@ $(document).ready ->
 	# Envia o formulario
 	$('.submit-button').click ->
 		$('#form_container').children('form').submit()
+
+	# FAZER PROVA
+	# Botões para fazer a prova
+	$('.next-button-prova').click ->
+		step = $(this).data('next-step')
+		next = parseInt(step.substr(8)) + 1
+
+		$(this).data('next-step', '#questao' + next)
+		$('.prev-button-prova').data('next-step', '#questao' + (next - 2))
+		$('.prev-button-prova').show()
+
+		# Mostra o passo correto
+		$('#questao' + (next - 2)).hide()
+		$(step).show()
+
+		# Ultimo passo
+		if next == (parseInt($('#questoes_num').val()) + 1)
+			$(this).hide()
+
+	$('.prev-button-prova').click ->
+		step = $(this).data('next-step')
+		next = parseInt(step.substr(8)) - 1
+
+		$(this).data('next-step', '#questao' + next)
+		$('.next-button-prova').data('next-step', '#questao' + (next + 2))
+
+		# Mostra o passo correto
+		$('#questao' + (next + 2)).hide()
+		$(step).show()
+
+		if next == 0
+			$(this).hide()
+		else if next >= 0
+			$('.next-button-prova').show()
+
+	$('.submit-button-prova').click ->
+		nao_respondido = false
+		proposicoes_count = $('input[type=radio]').length / 2
+		inputs = ""
+
+		for x in [1..parseInt($('#questoes_num').val())]
+			radios = $('#questao' + x + ' input[type=radio]')
+			
+			for y in [1..(radios.length / 2)]
+				resposta = $(radios.filter('.resposta_' + y + ':checked')).val()
+
+				if (resposta == undefined)
+					resposta = false
+					nao_respondido = true
+
+				inputs = inputs + '<input type="hidden" name="respostas[]resposta" value="' + resposta + '" />'
+
+				prop_id = $('#questao' + x + ' input[type=hidden]:regex(name, proposicao_id)')[y - 1]	
+				inputs = inputs + '<input type="hidden" name="respostas[]proposicao_id" value="' + $(prop_id).val() + '" />'
+				inputs = inputs + '<input type="hidden" name="respostas[]aluno_id" value="' + $('#aluno_id').val() + '" />'
+
+		form = $('.prova_container').children('form')
+
+		if nao_respondido
+			if confirm 'Existem proposições não respondidas. Elas serão consideradas falsas. Deseja continuar?'
+				form.append(inputs)
+				form.submit()
+		else
+			form.append(inputs)
+			form.submit()

@@ -18,13 +18,13 @@
 				<span class="required" title="Campo obrigatório" rel="tooltip">*</span>
 			</div>
 			<div class="controls span4" style="width: 88px">
-				<%= f.text_field :disponivel_data_inicio, :readonly => "" %>
+				<%= f.text_field :disponivel_data_inicio, { :readonly => "", :value => @prova.disponivel_data_inicio ? @prova.disponivel_data_inicio.strftime("%d/%m/%Y") : "" } %>
 			</div>
 			<div class="control-label" style="margin-left: 13px">
 				<%= f.label :disponivel_data_fim, 'até' %>
 			</div>
 			<div class="controls span4" style="width: 88px; margin-left:13px">
-				<%= f.text_field :disponivel_data_fim, :readonly => "" %>
+				<%= f.text_field :disponivel_data_fim, { :readonly => "", :value => @prova.disponivel_data_fim ? @prova.disponivel_data_fim.strftime("%d/%m/%Y") : "" } %>
 			</div>
 		</div>
 

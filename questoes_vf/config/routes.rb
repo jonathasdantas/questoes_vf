@@ -6,9 +6,11 @@ QuestoesVf::Application.routes.draw do
   root :to => 'home#index'
 
   # Prova Routes
-  resources :provas, :except => [:show]
+  resources :provas, :except => [:show, :index]
   match 'provas/:id/estudante/:estudante_id' => 'provas#show'
   match 'provas/:id/professor/:professor_id' => 'provas#show'
+  match 'provas/:id/do/:estudante_id' => 'provas#index', :via => :get
+  match 'provas/:prova_id/do/:estudante_id' => 'provas#do', :via => :post
 
   # Estudante Routes
   match 'estudantes/:id' => 'estudantes#index'

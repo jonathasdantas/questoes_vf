@@ -145,3 +145,72 @@
 	font-weight: bold;
 	cursor: default;
 }
+
+/* FAZER PROVA */
+.tempo_prova {
+	float:left;
+	margin-left: 10px;
+	width: 300px;
+}
+
+.data_prova {
+	text-align: right;
+	float: right;
+	margin-right: 10px;
+}
+
+.prova_container {
+	width: 690px;
+	height: 400px;
+	border-width: 1px;
+	padding: 10px;
+}
+
+.questao .questao_enunciado {
+	text-align: justify;
+	display: block;
+	height: 55px;
+	overflow-y:auto;
+}
+
+.questao {
+	display: none;
+}
+
+.questao_count hr {
+	width: 655px;
+	float: left;
+	margin-right: 10px;
+}
+
+#questao1 {
+	display: block;
+}
+
+.proposicoes {
+	height: 290px;
+	overflow-y: auto;
+}
+
+.proposicoes label {
+	padding-top: 0px!important;
+}
+
+.header_proposicoes {
+	margin-top: 10px;
+}
+
+.header_proposicoes span {
+	margin-right: 25px;
+	margin-left: 3px;
+}
+
+.prev-button-prova {
+	display: none;
+}
+
+.submit-button-prova {
+	float: right;
+	margin-right: 7px;
+}
+/* END FAZER PROVA */

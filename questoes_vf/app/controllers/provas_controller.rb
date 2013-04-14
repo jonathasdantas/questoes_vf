@@ -1,5 +1,27 @@
 class ProvasController < ApplicationController
 	def index # APENAS ESTUDANTE (FAZER A PROVA)
+		@prova = Prova.find(params[:id])
+	end
+
+	def do
+		ok = true
+
+		Resposta.transaction do
+			params[:respostas].each { |resposta| 
+				resposta_obj = Resposta.new(resposta)
+
+				if !resposta_obj.save
+					ok = false
+				end
+			}
+
+			if ok
+				redirect_to '/estudantes/1'
+			else
+				render :do
+			end
+
+		end
 	end
 
 	def new # GET
@@ -16,7 +38,7 @@ class ProvasController < ApplicationController
 		end
 	end
 
-	def show
+	def show # ver resultado da prova
 	end
 
 	def edit

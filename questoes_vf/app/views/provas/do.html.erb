@@ -1,0 +1,14 @@
+<% content_for :header do %>
+  <%= render "shared/estudante_header" %>
+<% end %>
+
+<% if @resposta.errors.any? %>
+<div class="error_messages">
+  <h2><%= pluralize(@resposta.errors.count, "error") %> prohibited this prova from being saved:</h2>
+  <ul>
+  <% @resposta.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

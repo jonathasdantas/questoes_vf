@@ -2,5 +2,40 @@
   <%= render "shared/estudante_header" %>
 <% end %>
 
-<h1>Prova#index</h1>
-<p>Find me in app/views/prova/index.html.erb</p>
+<fieldset class="grid_filter_container">
+  <legend>Informações</legend>
+  <div id="grid_filter">
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :data_inicio => @prova.data_inicio, :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  </div>
+</fieldset>
+
+<a href="#" class="button-primary submit-button-prova">Finalizar</a>
+
+<fieldset class="prova_container">
+	<legend><%= @prova.titulo  %></legend>
+	<input type="hidden" name="aluno_id" id="aluno_id" value="<%= params[:estudante_id] %>" />
+	<%= form_tag "", :class => "form-horizontal" do %>
+		<% @prova.questaos.each_with_index do |questao, i| %>
+			<div class="questao" id="questao<%= i + 1 %>">
+				<span class="questao_enunciado">
+					<strong><%= i + 1 %>) (<%= questao.valor %>)</strong> <%= questao.enunciado %>
+				</span>
+				<div class="questao_count">
+					<hr />
+					<span><%= i + 1 %>/<%= @prova.questaos.count %></span>
+				</div>
+				<div class="header_proposicoes">
+					<strong><span>V</span>F</strong>
+				</div>
+				<div class="proposicoes">
+					<%= render :partial => 'proposicao', :collection => questao.proposicaos %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</fieldset>
+<div id="nav_buttons" style="margin-right: 5px">
+	<a href="#" data-next-step="#questao1" class="button-default prev-button-prova">Anterior</a>
+	<a href="#" data-next-step="#questao2" class="button-default next-button-prova">Próxima</a>
+	<input type="hidden" value="<%= @prova.questaos.count %>" id="questoes_num" />
+</div>

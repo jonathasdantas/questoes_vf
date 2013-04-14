@@ -1,0 +1,16 @@
+<div class="proposicao">
+	<input type="hidden" name="proposicao_id" value="<%= proposicao.id %>" />
+	<div class="control-group control-inline">
+	  	<div class="controls">
+		    <label class="control-radio">
+		    	<input type="radio" value="true" class="resposta_<%= proposicao_counter + 1 %>" name="<%= proposicao.id %>" />
+		    </label>
+		    <label class="control-radio">
+		    	<input type="radio" value="false" class="resposta_<%= proposicao_counter + 1 %>" name="<%= proposicao.id %>" />
+		    </label>
+		    <span class="proposicao_enunciado">
+		    	<%= proposicao.texto %>
+		    </span>
+		</div>
+	</div>
+</div>
