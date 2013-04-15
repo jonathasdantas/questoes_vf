@@ -14,13 +14,12 @@ class ProvasController < ApplicationController
 					ok = false
 				end
 			}
+		end
 
-			if ok
-				redirect_to '/estudantes/1'
-			else
-				render :do
-			end
-
+		if ok
+			redirect_to '/estudantes/1'
+		else
+			render :do
 		end
 	end
 
@@ -43,11 +42,15 @@ class ProvasController < ApplicationController
 
 	def edit
 		@prova = Prova.find(params[:id])
+
+		if !@prova.is_editable()
+			redirect_to '/professors/1'
+		end
 	end
 
 	def update
 		@prova = Prova.find(params[:id])
-	    if @prova.update_attributes(params[:prova])
+	    if @prova.is_editable() && @prova.update_attributes(params[:prova])
 	      redirect_to '/professors/1'
 	    else
 	      render :edit

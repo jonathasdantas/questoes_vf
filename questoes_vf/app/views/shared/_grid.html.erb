@@ -17,6 +17,6 @@
   end
 
   g.column name: 'Nota' do |prova|
-    [prova.get_nota() == nil ? "?" : prova.get_nota(), {style: 'width: 10%;'}]
+    [prova.get_nota(params[:id], params[:disciplina]) == nil ? "?" : prova.get_nota(params[:id], params[:disciplina]), {style: 'width: 10%;'}]
   end
 end -%>

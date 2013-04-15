@@ -1,8 +1,8 @@
 class EstudantesController < ApplicationController
   def index
-  	filtro = Prova.do_aluno(params[:id])
+  	filtro = Prova.da_disciplina(params[:disciplina])
 
-  	if params[:antigas]
+  if params[:antigas]
   		filtro = filtro.excluir_antigas
 	end
 
