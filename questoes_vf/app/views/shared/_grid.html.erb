@@ -3,7 +3,7 @@
   g.blank_slate partial: "shared/empty_grid"
 
   g.column name: 'Título', attribute: 'titulo' do |prova|
-    [prova.titulo, {style: 'width: 50%;'}]
+    [prova.is_avaliable() && prova.get_data_inicio(params[:id]) == nil || prova.get_data_inicio(params[:id]) != nil ? link_to(prova.titulo, pre_do_test_path(prova, :estudante_id => params[:id], :disciplina => params[:disciplina])) : prova.titulo, {style: 'width: 50%;'}]
   end
 
   g.column name: 'Disponibilidade', attribute: 'disponivel_data_inicio'  do |prova|

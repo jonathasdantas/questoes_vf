@@ -1,0 +1,18 @@
+<% content_for :header do %>
+  <%= render "shared/estudante_header" %>
+<% end %>
+
+<fieldset class="grid_filter_container">
+  <legend>Informações</legend>
+  <div id="grid_filter">
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :data_inicio => @prova.get_data_inicio(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  </div>
+</fieldset>
+
+<fieldset class="prova_container">
+	<legend><%= @prova.titulo  %></legend>
+	<input type="hidden" name="aluno_id" id="aluno_id" value="<%= params[:estudante_id] %>" />
+	<%= form_tag do_test_path(@prova, :estudante_id => params[:estudante_id], :disciplina => params[:disciplina]), :class => "form-horizontal pre_do_form" do %>
+		<input type="submit" name="iniciar" class="button-success button-big" value="Iniciar" />
+	<% end %>
+</fieldset>

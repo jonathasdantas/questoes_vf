@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data_inicio: 2013-04-18 10:42:55
+  alunos: 
+  provas: 
+
+two:
+  data_inicio: 2013-04-18 10:42:55
+  alunos: 
+  provas: 

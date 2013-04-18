@@ -194,6 +194,9 @@ $(document).ready ->
 
 	# FAZER PROVA
 	# Botões para fazer a prova
+	if parseInt($('#questoes_num').val()) == 1
+		$('.next-button-prova').hide()
+
 	$('.next-button-prova').click ->
 		step = $(this).data('next-step')
 		next = parseInt(step.substr(8)) + 1

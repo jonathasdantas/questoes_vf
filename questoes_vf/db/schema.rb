@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331164030) do
+ActiveRecord::Schema.define(:version => 20130418134255) do
 
   create_table "alunos", :force => true do |t|
     t.integer  "redu_id"
@@ -19,13 +19,16 @@ ActiveRecord::Schema.define(:version => 20130331164030) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "alunos_provas", :id => false, :force => true do |t|
-    t.integer "aluno_id"
-    t.integer "prova_id"
+  create_table "alunos_provas", :force => true do |t|
+    t.datetime "data_inicio"
+    t.integer  "alunos_id"
+    t.integer  "provas_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "alunos_provas", ["aluno_id", "prova_id"], :name => "index_alunos_provas_on_aluno_id_and_prova_id"
-  add_index "alunos_provas", ["prova_id", "aluno_id"], :name => "index_alunos_provas_on_prova_id_and_aluno_id"
+  add_index "alunos_provas", ["alunos_id"], :name => "index_alunos_provas_on_alunos_id"
+  add_index "alunos_provas", ["provas_id"], :name => "index_alunos_provas_on_provas_id"
 
   create_table "comentarios", :force => true do |t|
     t.integer  "questao_id"
@@ -60,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20130331164030) do
     t.boolean  "justificar_verdadeira"
     t.integer  "qtd_verdadeira_anula"
     t.integer  "qtd_falsa_para_anular"
-    t.datetime "data_inicio"
     t.datetime "disponivel_data_inicio"
     t.datetime "disponivel_data_fim"
     t.integer  "duracao"

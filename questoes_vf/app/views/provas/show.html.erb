@@ -2,5 +2,56 @@
   <%= render "shared/estudante_header" %>
 <% end %>
 
-<h1>Prova#visualizar</h1>
-<p>Find me in app/views/prova/visualizar.html.erb</p>
+<fieldset class="grid_filter_container">
+  <legend>Informações</legend>
+  <div id="grid_filter">
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :data_inicio => @prova.get_data_inicio(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  </div>
+</fieldset>
+
+<% if params[:estudante_id] != nil && params[:disciplina] != nil %>
+<span class="nota_prova"><strong>Nota </strong><%= @prova.get_nota(params[:estudante_id],params[:disciplina]) %></span>
+<% else %>
+<span class="nota_prova"><strong>Média </strong><%= @prova.get_media(params[:disciplina]) %></span>
+<% end %>
+
+<fieldset class="prova_container">
+	<legend><%= @prova.titulo  %></legend>
+	<input type="hidden" name="aluno_id" id="aluno_id" value="<%= params[:estudante_id] %>" />
+
+	<% @prova.questaos.each_with_index do |questao, i| %>
+		<div class="questao" id="questao<%= i + 1 %>">
+			<span class="questao_enunciado">
+				<strong><%= i + 1 %>) (<%= questao.valor %>)</strong> <%= questao.enunciado %>
+			</span>
+			<div class="questao_count">
+				<hr />
+				<span><%= i + 1 %>/<%= @prova.questaos.count %></span>
+			</div>
+			<div class="header_proposicoes">
+				<strong><span>V</span>F</strong>
+			</div>
+			<div class="proposicoes">
+				<% questao.proposicaos.each do |proposicao| %>
+					<%= render :partial => 'proposicao_respondida', :locals => { :resposta => (params[:estudante_id] != nil ? proposicao.get_resposta(params[:estudante_id]).resposta : proposicao.resposta), :proposicao => proposicao } %>
+				<% end %>
+
+				<div class="comentarios_header">
+					<span>
+						Comentários
+					</span>
+				</div>
+				<div class="comentarios">
+				<%= render :partial => 'comentarios', :locals => {:comentarios => questao.get_comentarios(params[:estudante_id])} %>
+				</div>
+			</div>
+
+			
+		</div>
+	<% end %>
+</fieldset>
+<div id="nav_buttons" style="margin-right: 5px">
+	<a href="#" data-next-step="#questao1" class="button-default prev-button-prova">Anterior</a>
+	<a href="#" data-next-step="#questao2" class="button-default next-button-prova">Próxima</a>
+	<input type="hidden" value="<%= @prova.questaos.count %>" id="questoes_num" />
+</div>

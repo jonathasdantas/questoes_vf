@@ -4,4 +4,8 @@ class Proposicao < ActiveRecord::Base
   
   has_many :respostas
   belongs_to :questao
+
+  def get_resposta(estudante_id)
+  	return Resposta.where('proposicao_id = ?', self.id).first
+  end
 end

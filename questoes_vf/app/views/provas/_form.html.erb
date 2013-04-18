@@ -1,5 +1,6 @@
 <%= form_for @prova, :html => { :class => "form-horizontal" } do |f| %>
-	
+	<input type="hidden" name="prova[disciplina_id]" value="<%= params[:disciplina] %>" />
+	<input type="hidden" name="prova[professor_id]" value="<%= params[:professor_id] %>" />
 	<div id="passo1" data-background-position="0">
 		<% if @prova.errors.any? %>
 	    <div class="error_messages">

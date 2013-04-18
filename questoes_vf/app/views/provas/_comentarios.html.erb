@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th style="width: 25%">Nome</th>
+			<th style="width: 50%">Comentário</th>
+			<th style="width: 20%">Tempo</th>
+			<th style="width: 5%">Ranking</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% comentarios.each do |comentario| %>
+		<tr>
+			<td><%= comentario.aluno.get_nome %></td>
+			<td>
+				<%= comentario.texto %>
+			</td>
+			<td>
+				<%= comentario.pretty_date %>
+			</td>
+			<td><%= comentario.ranking %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

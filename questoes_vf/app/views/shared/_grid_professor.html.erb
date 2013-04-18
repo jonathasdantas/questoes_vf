@@ -17,10 +17,10 @@
   end
 
   g.column name: 'Média' do |prova|
-    [prova.get_media() == nil ? "?" : prova.get_media(), {style: 'width: 10%;'}]
+    [prova.get_media(params[:disciplina]) == nil ? "?" : prova.get_media(params[:disciplina]), {style: 'width: 10%;'}]
   end
 
   g.column do |prova|
-    prova.is_editable() ? link_to('Editar', edit_prova_path(prova)) : ""
+    prova.is_editable() ? link_to('Editar', edit_prova_path(prova, :disciplina => params[:disciplina])) : ""
   end
 end -%>

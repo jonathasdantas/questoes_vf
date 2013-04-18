@@ -11,7 +11,6 @@ class CreateProvas < ActiveRecord::Migration
       t.boolean :justificar_verdadeira
       t.integer :qtd_verdadeira_anula
       t.integer :qtd_falsa_para_anular
-      t.datetime :data_inicio
       t.datetime :disponivel_data_inicio
       t.datetime :disponivel_data_fim
       t.integer :duracao
