@@ -3,7 +3,7 @@
   g.blank_slate partial: "shared/empty_grid"
 
   g.column name: 'Título', attribute: 'titulo' do |prova|
-    [prova.is_avaliable() && prova.get_data_inicio(params[:id]) == nil || prova.get_data_inicio(params[:id]) != nil ? link_to(prova.titulo, pre_do_test_path(prova, :estudante_id => params[:id], :disciplina => params[:disciplina])) : prova.titulo, {style: 'width: 50%;'}]
+    [prova.is_avaliable() || prova.get_data_inicio(params[:estudante_id]) != nil || prova.times_over(params[:estudante_id]) ? link_to(prova.titulo, pre_do_test_path(prova, :estudante_id => params[:estudante_id], :disciplina => params[:disciplina])) : prova.titulo, {style: 'width: 50%;'}]
   end
 
   g.column name: 'Disponibilidade', attribute: 'disponivel_data_inicio'  do |prova|
@@ -17,6 +17,6 @@
   end
 
   g.column name: 'Nota' do |prova|
-    [prova.get_nota(params[:id], params[:disciplina]) == nil ? "?" : prova.get_nota(params[:id], params[:disciplina]), {style: 'width: 10%;'}]
+    [prova.get_nota(params[:estudante_id], params[:disciplina]) == nil ? "?" : number_with_precision(prova.get_nota(params[:estudante_id], params[:disciplina]), :precision => 2), {style: 'width: 10%;'}]
   end
 end -%>

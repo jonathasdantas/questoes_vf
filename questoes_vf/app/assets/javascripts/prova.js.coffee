@@ -18,6 +18,26 @@ check_required = (components) ->
 				$(_elem).parent().parent().removeClass('control-error')
 	ok
 
+generate_respostas = ->
+	inputs = ""
+
+	for x in [1..parseInt($('#questoes_num').val())]
+		radios = $('#questao' + x + ' input[type=radio]')
+		
+		for y in [1..(radios.length / 2)]
+			resposta = $(radios.filter('.resposta_' + y + ':checked')).val()
+
+			if (resposta == undefined)
+				resposta = false
+				nao_respondido = true
+
+			inputs = inputs + '<input type="hidden" name="respostas[]resposta" value="' + resposta + '" />'
+
+			prop_id = $('#questao' + x + ' input[type=hidden]:regex(name, proposicao_id)')[y - 1]	
+			inputs = inputs + '<input type="hidden" name="respostas[]proposicao_id" value="' + $(prop_id).val() + '" />'
+			inputs = inputs + '<input type="hidden" name="respostas[]aluno_id" value="' + $('#aluno_id').val() + '" />'
+	inputs
+
 # Preenche campos do resumo
 fill_passo3 = ->
 	$('.titulo_res').html($('#prova_titulo').val())
@@ -92,6 +112,10 @@ generate_questoes_res = ->
 			.replace(reg_props, proposicoes)
 		)
 
+end_time = ->
+	$('#do_form').append(generate_respostas)
+	$('#do_form').submit()
+
 $(document).ready ->
 	$('#prova_disponivel_data_inicio').datepicker({
 		language: 'pt-BR',
@@ -110,6 +134,13 @@ $(document).ready ->
 		unique: true
 	})
 	organizar_nomes('.titulo_questao');
+
+	$('#time_left').kkcountdown({
+		hoursText : ':',
+		minutesText : ':',
+		displayZeroDays : false,
+		callback: end_time
+	})
 
 	# Remover questão ou proposição
 	$('form').on 'click', '.remove_icon', (event) ->
@@ -232,23 +263,7 @@ $(document).ready ->
 	$('.submit-button-prova').click ->
 		nao_respondido = false
 		proposicoes_count = $('input[type=radio]').length / 2
-		inputs = ""
-
-		for x in [1..parseInt($('#questoes_num').val())]
-			radios = $('#questao' + x + ' input[type=radio]')
-			
-			for y in [1..(radios.length / 2)]
-				resposta = $(radios.filter('.resposta_' + y + ':checked')).val()
-
-				if (resposta == undefined)
-					resposta = false
-					nao_respondido = true
-
-				inputs = inputs + '<input type="hidden" name="respostas[]resposta" value="' + resposta + '" />'
-
-				prop_id = $('#questao' + x + ' input[type=hidden]:regex(name, proposicao_id)')[y - 1]	
-				inputs = inputs + '<input type="hidden" name="respostas[]proposicao_id" value="' + $(prop_id).val() + '" />'
-				inputs = inputs + '<input type="hidden" name="respostas[]aluno_id" value="' + $('#aluno_id').val() + '" />'
+		inputs = generate_respostas	
 
 		form = $('.prova_container').children('form')
 

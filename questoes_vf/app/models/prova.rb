@@ -68,11 +68,40 @@ class Prova < ActiveRecord::Base
     	return nota
 	end
 
+    def get_end_time(aluno_id)
+        tempo = DateTime.now.to_i()
+
+        data_inicio = self.get_data_inicio(aluno_id)
+
+        if data_inicio != nil
+            tempo = data_inicio.to_i() + self.duracao * 60
+        end
+
+        return tempo
+    end
+
     def is_editable
         return self.disponivel_data_inicio > DateTime.now
     end
 
     def is_avaliable
         return self.disponivel_data_inicio <= DateTime.now && self.disponivel_data_fim > DateTime.now 
+    end
+
+    def times_over(aluno_id)
+        return self.get_end_time(aluno_id) <= DateTime.now.to_i()
+    end
+
+    def end_time(aluno_id)
+        retorno = false
+
+        aluno_prova = AlunosProvas.where('provas_id = ? and alunos_id = ?', self.id, aluno_id).first
+
+        if aluno_id != nil
+            aluno_prova.data_inicio = aluno_prova.data_inicio - self.duracao.minutes
+            retorno = aluno_prova.save
+        end
+
+        return retorno
     end
 end

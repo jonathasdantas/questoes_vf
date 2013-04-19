@@ -8,7 +8,7 @@ class Questao < ActiveRecord::Base
 
   accepts_nested_attributes_for :proposicaos, allow_destroy: true
 
-  def get_comentarios(aluno_id)
-  	return Comentario.where('questao_id = ? and aluno_id = ?', self.id, aluno_id)
+  def get_comentarios
+  	return Comentario.where('questao_id = ?', self.id).order("created_at DESC")
   end
 end

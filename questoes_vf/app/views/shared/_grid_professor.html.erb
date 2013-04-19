@@ -17,10 +17,10 @@
   end
 
   g.column name: 'Média' do |prova|
-    [prova.get_media(params[:disciplina]) == nil ? "?" : prova.get_media(params[:disciplina]), {style: 'width: 10%;'}]
+    [prova.get_media(params[:disciplina]) == nil ? "?" : number_with_precision(prova.get_media(params[:disciplina]), :precision => 2), {style: 'width: 10%;'}]
   end
 
   g.column do |prova|
-    prova.is_editable() ? link_to('Editar', edit_prova_path(prova, :disciplina => params[:disciplina])) : ""
+    prova.is_editable() ? link_to('Editar', edit_prova_path(prova, {:disciplina => params[:disciplina], :professor_id => params[:professor_id]})) : ""
   end
 end -%>

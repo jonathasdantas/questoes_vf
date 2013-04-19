@@ -234,14 +234,32 @@
 	margin-right: 5px;
 }
 .comentarios {
+	margin-left: 5px;
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
 
 .comentarios_header {
 	font-size: 22px;
-	margin-top: 60px;
+	margin-top: 40px;
 	margin-bottom: 10px;
 	text-align: center;
+}
+
+.novo_comentario {
+	margin: 20px 0px;
+}
+
+.novo_comentario textarea {
+	width: 661px;
+	height: 75px;
+	max-height: 75px;
+}
+
+.novo_comentario input {
+	margin: 5px 0px;
+	float: right;
+	height: 25px;
+	padding-top: 3px;
 }
 /* END SHOW PROVA */

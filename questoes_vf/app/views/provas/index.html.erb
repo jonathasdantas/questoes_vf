@@ -5,7 +5,7 @@
 <fieldset class="grid_filter_container">
   <legend>Informações</legend>
   <div id="grid_filter">
-  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :data_inicio => @prova.get_data_inicio(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :tempo_restante => @prova.get_end_time(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
   </div>
 </fieldset>
 
@@ -14,7 +14,10 @@
 <fieldset class="prova_container">
 	<legend><%= @prova.titulo  %></legend>
 	<input type="hidden" name="aluno_id" id="aluno_id" value="<%= params[:estudante_id] %>" />
-	<%= form_tag submit_do_test_path(@prova), :class => "form-horizontal" do %>
+	<%= form_tag submit_do_test_path(@prova), :class => "form-horizontal", :id => "do_form" do %>
+		<input type="hidden" name="disciplina" value="<%= params[:disciplina] %>" />
+		<input type="hidden" name="estudante_id" value="<%= params[:estudante_id] %>" />
+		<input type="hidden" name="prova_id" value="<%= params[:id] %>" />
 		<% @prova.questaos.each_with_index do |questao, i| %>
 			<div class="questao" id="questao<%= i + 1 %>">
 				<span class="questao_enunciado">

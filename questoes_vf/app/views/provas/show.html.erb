@@ -5,14 +5,14 @@
 <fieldset class="grid_filter_container">
   <legend>Informações</legend>
   <div id="grid_filter">
-  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :data_inicio => @prova.get_data_inicio(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :tempo_restante => @prova.get_end_time(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
   </div>
 </fieldset>
 
 <% if params[:estudante_id] != nil && params[:disciplina] != nil %>
-<span class="nota_prova"><strong>Nota </strong><%= @prova.get_nota(params[:estudante_id],params[:disciplina]) %></span>
+<span class="nota_prova"><strong>Nota </strong><%= number_with_precision(@prova.get_nota(params[:estudante_id],params[:disciplina]), :precision => 2) %></span>
 <% else %>
-<span class="nota_prova"><strong>Média </strong><%= @prova.get_media(params[:disciplina]) %></span>
+<span class="nota_prova"><strong>Média </strong><%= number_with_precision(@prova.get_media(params[:disciplina]), :precision => 2) %></span>
 <% end %>
 
 <fieldset class="prova_container">
@@ -42,7 +42,7 @@
 					</span>
 				</div>
 				<div class="comentarios">
-				<%= render :partial => 'comentarios', :locals => {:comentarios => questao.get_comentarios(params[:estudante_id])} %>
+				<%= render :partial => 'comentarios', :locals => {:questao_id => questao.id, :comentarios => questao.get_comentarios()} %>
 				</div>
 			</div>
 

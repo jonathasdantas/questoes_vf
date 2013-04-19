@@ -6,22 +6,20 @@ QuestoesVf::Application.routes.draw do
   root :to => 'home#index'
 
   # Prova Routes
-  resources :provas, :except => [:index]
-  #match 'provas/:id/estudante/:estudante_id' => 'provas#show'
-  #match 'provas/:id/professor/:professor_id' => 'provas#show'
-  
+  resources :provas, :except => [:index] 
   match 'provas/:id/pre_do/:estudante_id' => 'provas#pre_do', :via => :get, :as => 'pre_do_test' ## |
-  match 'provas/:id/do/:estudante_id' => 'provas#index', :via => :post, :as => 'do_test'         ## | INICIAR PROVA -> FAZER PROVA -> ENVIAR PROVA
+  match 'provas/:id/do/:estudante_id' => 'provas#index', :via => [:post, :get], :as => 'do_test'         ## | INICIAR PROVA -> FAZER PROVA -> ENVIAR PROVA
   match 'provas/:id/do' => 'provas#do', :via => :post, :as => 'submit_do_test'                   ## |
 
   # Estudante Routes
-  match 'estudantes/:id' => 'estudantes#index'
+  match 'estudantes/:estudante_id' => 'estudantes#index', :as => 'index_estudantes'
 
   # Professor Routes
-  match 'professors/:id' => 'professors#index'
+  match 'professores/:professor_id' => 'professors#index', :as => 'index_professores'
 
   # Relatório Routes
-  match 'relatorios' => 'relatorios#index'
+  match 'relatorios' => 'relatorios#index', :via => :get
+  match 'relatorios' => 'relatorios#report', :via => :post, :as => 'report'
   match 'relatorios/texto' => 'relatorios#texto', :via => :post
   match 'relatorios/excel' => 'relatorios#excel', :via => :post
 

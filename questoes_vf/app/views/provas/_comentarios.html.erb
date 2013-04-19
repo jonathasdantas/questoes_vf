@@ -1,23 +1,54 @@
+<div class="novo_comentario">
+	<%= form_tag comentarios_path do %>
+		<input type="hidden" value="<%= params[:id] %>" name="prova_id" />
+		<input type="hidden" value="<%= params[:disciplina] %>" name="disciplina" />
+		<input type="hidden" value="<%= params[:estudante_id] %>" name="estudante_id" />
+		<input type="hidden" value="<%= params[:professor_id] %>" name="professor_id" />
+
+		<input type="hidden" value="<%= params[:estudante_id] %>" name="comentario[aluno_id]" />
+		<input type="hidden" value="<%= questao_id %>" name="comentario[questao_id]" />
+		<div class="control-group control-inline">
+			<div class="control-label">
+			    <label for="comentario_texto">Comentário</label>
+		  	</div>
+		  	<div class="controls">
+			    <textarea maxlength="200" id="comentario_texto" name="comentario[texto]"></textarea>
+			</div>
+			<div class="controls">
+				<input type="submit" value="Comentar" name="comentar" class="button-default" />
+			</div>
+		</div>
+	<% end %>
+</div>
+
 <table>
 	<thead>
 		<tr>
-			<th style="width: 25%">Nome</th>
+			<th style="width: 20%">Nome</th>
 			<th style="width: 50%">Comentário</th>
-			<th style="width: 20%">Tempo</th>
+			<th style="width: 25%">Tempo</th>
 			<th style="width: 5%">Ranking</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% comentarios.each do |comentario| %>
 		<tr>
-			<td><%= comentario.aluno.get_nome %></td>
+			<td><%= comentario.aluno.get_nome() %></td>
 			<td>
 				<%= comentario.texto %>
 			</td>
 			<td>
 				<%= comentario.pretty_date %>
 			</td>
-			<td><%= comentario.ranking %></td>
+			<td><%= comentario.ranking == nil ? 0.0 : comentario.ranking %></td>
+			<td>
+				<% if comentario.aluno_id.to_s() == params[:estudante_id] %>
+				<%= button_to("X", comentario_path(comentario, :prova_id => params[:id], :disciplina => params[:disciplina], :estudante_id => params[:estudante_id]), {:title => "Remover comentário", :method => :delete}) %>
+				<% else %>
+					
+				<% end %>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>

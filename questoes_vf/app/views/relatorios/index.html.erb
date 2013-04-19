@@ -2,5 +2,23 @@
   <%= render "shared/professor_header" %>
 <% end %>
 
-<h1>Relatorio#index</h1>
-<p>Find me in app/views/relatorio/index.html.erb</p>
+<fieldset id="form_container">
+	<div class="relatorio_select">
+		<%= form_tag report_path do %>
+			<input type="hidden" name="disciplina" value="<%= params[:disciplina] %>" />
+			<input type="hidden" name="professor_id" value="<%= params[:professor_id] %>" />
+			<div class="control-group control-inline">
+				<div class="control-label">
+				    <label for="prova_id">Prova</label>
+			  	</div>
+			  	<div class="controls">
+				    <%= collection_select(:prova, :id, @provas, :id, :titulo) %>
+				</div>
+				<div class="controls">
+				    <input type="submit" value="Textual" name="report" class="button-default" />
+				    <input type="submit" value="Excel" name="report" class="button-default" />
+				</div>
+			</div>
+		<% end %>
+	</div>
+</fieldset>

@@ -1,3 +1,20 @@
 // Place all the styles related to the relatorio controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.relatorio_select {
+	margin: 135px 160px;
+}
+
+.relatorio_select select {
+	width: 300px;
+}
+
+.relatorio_select input {
+	width: 100px;
+	margin-top: 10px;
+}
+
+.relatorio_select input:first-child {
+	margin-right: 95px;
+}

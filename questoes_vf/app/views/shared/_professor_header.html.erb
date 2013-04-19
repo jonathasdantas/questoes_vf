@@ -1,7 +1,7 @@
 <span class="logo">
-	<a class="logo_professor" title="Questões V ou F - Professor" href="#">Questões V ou F - Professor</a>
+	<%= link_to  "Questões V ou F - Estudante", index_professores_path(params[:professor_id], { :disciplina => params[:disciplina] }), :class => "logo_professor" %>
 </span>
 <nav class="menu">
-	<%= link_to 'Nova Prova', new_prova_path(:disciplina => params[:disciplina], :professor_id => params[:id]), :class => "button-success button-big" %>
-	<%= link_to 'Relatórios', :relatorios, :class => "button-default button-big" %>
+	<%= link_to 'Nova Prova', new_prova_path(:disciplina => params[:disciplina], :professor_id => params[:professor_id]), :class => "button-success button-big" %>
+	<%= link_to 'Relatórios', relatorios_path(:disciplina => params[:disciplina], :professor_id => params[:professor_id]), :class => "button-default button-big" %>
 </nav>

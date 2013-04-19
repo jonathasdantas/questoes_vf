@@ -1,4 +1,4 @@
 <span class="logo">
-	<a class="logo_estudante" title="Questões V ou F - Estudante" href="#">Questões V ou F - Estudante</a>
+	<%= link_to  "Questões V ou F - Estudante", index_estudantes_path(params[:estudante_id], { :disciplina => params[:disciplina] }), :class => "logo_estudante" %>
 </span>
 <nav class="menu"></nav>
