@@ -18,7 +18,7 @@
 
 .icon-arrow-left {
 	display: block;
-	background: url(image_path('arrow_left.png')) 0 0 no-repeat;
+	background: url('/assets/arrow_left.png') 0 0 no-repeat;
 
 	width: 20px;
 	height: 20px;
@@ -26,7 +26,7 @@
 
 .icon-arrow-right {
 	display: block;
-	background: url(image_path('arrow_right.png')) 0 0 no-repeat;
+	background: url('/assets/arrow_right.png') 0 0 no-repeat;
 
 	width: 20px;
 	height: 20px;
@@ -44,7 +44,7 @@
 }
 
 #form_steps nav {
-	background: url(image_path('passoapasso.png')) top no-repeat;
+	background: url('/assets/passoapasso.png') top no-repeat;
 	width: 506px;
 	height: 22px;
 }
@@ -126,7 +126,7 @@
 	cursor: pointer;
 
 	display: block;
-	background: url(image_path('icon_remove.png')) top no-repeat;
+	background: url('/assets/icon_remove.png') top no-repeat;
 }
 
 .remove_questao {
