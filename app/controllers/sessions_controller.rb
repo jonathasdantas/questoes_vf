@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @user = current_user || User.create_with_omniauth(auth_hash)
 
     session[:user_id] = @user.uid
-    redirect_to new_submission_path
+    redirect_to inicial_path
   end
 
   protected
