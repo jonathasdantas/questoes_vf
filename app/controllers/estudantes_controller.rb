@@ -1,3 +1,4 @@
+# encoding: utf-8
 class EstudantesController < ApplicationController
   def index
   	filtro = Prova.da_disciplina(params[:disciplina])
