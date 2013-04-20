@@ -1,12 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% content_for :header do %>
+  <%= render "shared/header" %>
+<% end %>
 
-
-<table>
-<tr>
-	<td>Linha 1 dv1</td><td>Linha 1 dv2</td>
-</tr>
-<tr> 
-	<td>Linha 2 dv1</td><td>Linha 2 dv2</td>
-</tr>
-</table>
+<div class="message-block message-warning" style="width: 677px">
+    <div class="message-block-content">
+        Você precisa estar em um dos canvas disponíveis para acessar a aplicação.
+    </div>
+</div>

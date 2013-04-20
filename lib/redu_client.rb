@@ -38,6 +38,3 @@ class ReduClient
     end
   end
 end
-
-# client = ReduClient.new(User.first.access_token, 2467)
-# client.create_canvas(2467, "http://www.redu.com.br", "Meu canvas")

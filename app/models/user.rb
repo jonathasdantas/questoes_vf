@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :login, :name, :token, :uid
+  has_one :aluno
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -8,6 +9,7 @@ class User < ActiveRecord::Base
       user.login = auth["info"]["login"]
       user.email = auth["info"]["email"]
       user.token = auth["credentials"]["token"]
+      user.aluno = Aluno.new(:redu_id => auth["uid"])
     end
   end
 end

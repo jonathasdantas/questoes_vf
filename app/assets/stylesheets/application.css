@@ -62,6 +62,10 @@ header .logo_professor {
 	background: url('/assets/logo_professor.png') top no-repeat;
 }
 
+header .logo {
+	background: url('/assets/logo.png') top no-repeat;
+}
+
 header .menu {
 	width: 450px;
 	height: 45px;
@@ -75,25 +79,25 @@ header .menu a {
 }
 
 #container {
-	width: 720px;
+	width: 700px;
 }
 
 
 #welcome {
 	clear: both;
-	width: 200px;
+	width: 180px;
 	float: right;
 	text-align: right;
 	margin: 35px 0px 20px 0px;
 }
 
 #welcome_text {
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /* GRID FILTER CSS */
 .grid_filter_container {
-	width: 710px;
+	width: 694px;
 	border-width: 1px;
 	margin-bottom: 30px;
 }
