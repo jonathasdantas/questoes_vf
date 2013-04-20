@@ -13,7 +13,8 @@ class EstudantesController < ApplicationController
   	@provas_grid = initialize_grid(filtro)
 
     client = ReduClient.new(User.first.token, 2957)
-    #client.create_canvas("http://questoes-vf.herokuapp.com/professores/1" + "?disciplina=1", "Questoes V ou F")
-    client.create_canvas("http://www.redu.com.br" + "?disciplina=1", "Questoes V ou F")
+    client.remove_canvas(461)
+    client.create_canvas("http://questoes-vf.herokuapp.com/professores/1" + "?disciplina=1", "Questoes V ou F")
+    #client.create_canvas("http://www.redu.com.br" + "?disciplina=1", "Questoes V ou F")
   end
 end
