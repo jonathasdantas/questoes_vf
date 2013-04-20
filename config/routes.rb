@@ -23,6 +23,9 @@ QuestoesVf::Application.routes.draw do
   match 'relatorios/texto' => 'relatorios#texto', :via => :post
   match 'relatorios/excel' => 'relatorios#excel', :via => :post
 
+  # REDU API
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/:provider', :to => 'sessions#create', as: :create_session
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

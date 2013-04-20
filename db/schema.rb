@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418134255) do
+ActiveRecord::Schema.define(:version => 20130420041713) do
 
   create_table "alunos", :force => true do |t|
     t.integer  "redu_id"
@@ -95,5 +95,15 @@ ActiveRecord::Schema.define(:version => 20130418134255) do
 
   add_index "resposta", ["aluno_id"], :name => "index_resposta_on_aluno_id"
   add_index "resposta", ["proposicao_id"], :name => "index_resposta_on_proposicao_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "login"
+    t.string   "name"
+    t.integer  "uid"
+    t.string   "token"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
