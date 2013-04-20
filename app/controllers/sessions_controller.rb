@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_current_user, :only => :create
+
   def create
     @user = User.find_by_uid(auth_hash['uid']) ||
       User.create_with_omniauth(auth_hash)
