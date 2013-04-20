@@ -3,7 +3,7 @@ QuestoesVf::Application.routes.draw do
   resources :comentarios, :only => [:new, :create, :destroy]
   
   # Main Routes
-  root :to => 'home#index'
+  root :to => 'home#index', :as => 'inicial'
 
   # Prova Routes
   resources :provas, :except => [:index] 
