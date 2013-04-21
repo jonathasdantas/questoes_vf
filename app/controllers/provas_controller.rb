@@ -82,8 +82,7 @@ class ProvasController < ApplicationController
 			subject = client.create_subject("Prova - " + @prova.titulo)
 			puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 			puts subject.body
-			puts subject.body.id
-			puts subject['id']
+			puts subject.body['id']
 			#client.create_lecture(subject['id'], @prova.titulo, QuestoesVf::Application.config.root_url + pre_do_test_path(@prova.id, @session_user.uid, :disciplina => params[:prova][:disciplina_id]))
 
 			redirect_to index_professores_path(params[:prova][:professor_id], :disciplina => params[:prova][:disciplina_id])
