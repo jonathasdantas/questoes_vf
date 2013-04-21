@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def client(space_id)
-    ReduClient.new(current_user.access_token, space_id)
+    ReduClient.new(current_user.token, space_id)
   end
 
   def verify_current_user
