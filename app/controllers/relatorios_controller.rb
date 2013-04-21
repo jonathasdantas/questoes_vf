@@ -4,13 +4,13 @@ class RelatoriosController < ApplicationController
   end
 
   def report
-    #client = client(params[:disciplina])
+    client = client(params[:disciplina])
 
     @prova = Prova.find(params[:prova][:id])
 
     tempos = tempos(@prova.id)
 
-    #@num_matriculados = client.members_count
+    @num_matriculados = client.members_count
     @num_fizeram_prova = num_fizeram_prova(@prova.id, params[:disciplina])
     @media = @prova.get_media(@prova.disciplina_id)
     @tempo_medio = tempos[0]
