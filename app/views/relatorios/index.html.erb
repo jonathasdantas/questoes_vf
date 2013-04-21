@@ -4,7 +4,7 @@
 
 <fieldset id="form_container">
 	<div class="relatorio_select">
-		<%= form_tag report_path do %>
+		<%= form_tag report_path, :target => "_blank" do %>
 			<input type="hidden" name="disciplina" value="<%= params[:disciplina] %>" />
 			<input type="hidden" name="professor_id" value="<%= params[:professor_id] %>" />
 			<div class="control-group control-inline">

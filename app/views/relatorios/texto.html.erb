@@ -1,6 +1,6 @@
 <fieldset>
 	<span class="tempo_prova">
-		<span class="tempo_total">
+		<span class="tempo_total" style="margin-top:13px;display:block">
 			<strong>Tempo total disponível:</strong>
 			<%= @prova.duracao %> mim
 		</span>
@@ -13,7 +13,13 @@
 
 <br />
 
-<span><strong>Número de estudantes matriculados: </strong><%= @num_matriculados %></span><br />
-<span><strong>Número de estudantes que fizeram a prova: </strong><%= @num_fizeram_prova %></span><br />
+<p>
+	<span><strong>Número de estudantes matriculados: </strong><%= @num_matriculados %></span><br />
+	<span><strong>Número de estudantes que fizeram a prova: </strong><%= @num_fizeram_prova %></span><br />
+</p>
 <span><strong>Média das notas: </strong><%= @media ||= "?" %> (calculada apenas se a disponibilidade encerrou)</span><br />
-<span><strong>Tempo médio de duração das provas: </strong><%= @tempo_medio %></span><br />
+<p>
+	<span><strong>Tempo médio de duração das provas: </strong><%= @tempo_medio %></span><br />
+	<span><strong>Tempo mínimo de duração das provas: </strong><%= @tempo_min >= 0 ? (@tempo_min == 0 ? "menos de 1 minuto" : @tempo_min) : "?" %></span><br />
+	<span><strong>Tempo máximo de duração das provas: </strong><%= @tempo_max >= 0 ? (@tempo_max == 0 ? "menos de 1 minuto" : @tempo_max) : "?" %></span><br />
+</p>

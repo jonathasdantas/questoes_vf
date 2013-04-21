@@ -31,11 +31,6 @@ class ReduClient
   def members_count()
     attrs = { :role => 'member' }
     response = connection.get("api/spaces/#{@space_id}/users", attrs)
-
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    puts response.body
-    puts response.body.count
-
     response.body.count
   end
 
