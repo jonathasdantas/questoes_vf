@@ -21,5 +21,9 @@ class Comentario < ActiveRecord::Base
       else retorno = ((a+180000)/(60*60*24*7)).to_i.to_s+' semanas atrás'
     end
   end
+
+  def get_nome
+    return User.find_by_uid(self.aluno_id).name
+  end
 end
 

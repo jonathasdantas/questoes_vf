@@ -5,8 +5,4 @@ class Aluno < ActiveRecord::Base
     has_many :respostas
     has_many :comentarios
     has_many :alunos_provas
-
-    def get_nome
-    	return self.user.name
-    end
 end

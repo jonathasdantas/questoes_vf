@@ -34,7 +34,7 @@
 	<tbody>
 		<% comentarios.each do |comentario| %>
 		<tr>
-			<td><%=  %></td>
+			<td><%= comentario.get_nome %></td>
 			<td>
 				<%= comentario.texto %>
 			</td>
