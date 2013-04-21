@@ -4,6 +4,7 @@
 
 <fieldset id="form_container">
 	<div class="relatorio_select">
+		<% if @provas.count != 0 %>
 		<%= form_tag report_path, :target => "_blank" do %>
 			<input type="hidden" name="disciplina" value="<%= params[:disciplina] %>" />
 			<input type="hidden" name="professor_id" value="<%= params[:professor_id] %>" />
@@ -19,6 +20,13 @@
 				    <input type="submit" value="Excel" name="report" class="button-default" />
 				</div>
 			</div>
+		<% end %>
+		<% else %>
+		<div class="message-block message-warning" style="width: 677px">
+		    <div class="message-block-content">
+		        Não existem provas cadastradas para a disciplina atual.
+		    </div>
+		</div>
 		<% end %>
 	</div>
 </fieldset>
