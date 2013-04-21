@@ -4,14 +4,23 @@ class RelatoriosController < ApplicationController
   end
 
   def report
-  	if params[:report] == 'Textual'
-  		
+    client = client(params[:disciplina])
+
+    @prova = Prova.find(params[:prova][:id])
+    @num_matriculados = client.members_count
+    @num_fizeram_prova = 4
+    @media = @prova.get_media(@prova.disciplina_id)
+    @tempo_medio = 30
+
+    if params[:report] == 'Textual'
+      render "texto", :layout => "report"
   	elsif params[:report] == 'Excel'
   			
   	end
   end
 
   def texto
+    render :layout => "report"
   end
 
   def excel

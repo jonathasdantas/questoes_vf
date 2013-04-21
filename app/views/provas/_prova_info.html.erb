@@ -1,15 +1,10 @@
 <span class="tempo_prova">
 	<span class="tempo_total">
 		<strong>Tempo total disponível:</strong>
-		<%= duracao %> mim
-	</span>
-	<br />
-	<span class="tempo_restante">
-		<strong>Tempo restante:</strong>
-		<span id="time_left" data-time="<%= tempo_restante %>"></span>
+		<%= @prova.duracao %> mim
 	</span>
 </span>
 <span class="data_prova">
-	<strong>Data início:</strong> <%= disponivel_inicio.strftime('%d/%m/%Y %H:%M') %><br />
-	<strong>Data fim:</strong> <%= disponivel_fim.strftime('%d/%m/%Y %H:%M') %>
+	<strong>Data início:</strong> <%= @prova.disponivel_inicio.strftime('%d/%m/%Y %H:%M') %><br />
+	<strong>Data fim:</strong> <%= @prova.disponivel_fim.strftime('%d/%m/%Y %H:%M') %>
 </span>

@@ -28,6 +28,17 @@ class ReduClient
     connection.post("api/subjects/#{subject_id}/lectures", attrs)
   end
 
+  def members_count()
+    attrs = { :role => 'member' }
+    response = connection.get("api/spaces/#{@space_id}/users", attrs)
+
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    puts response.body
+    puts response.body.count
+
+    response.body.count
+  end
+
   def connection
     @conn ||= Faraday.new(:url => 'http://redu.com.br') do |faraday|
       faraday.request  :url_encoded

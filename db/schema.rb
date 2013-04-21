@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130420041713) do
 
   create_table "alunos", :force => true do |t|
+    t.integer  "user_id"
     t.integer  "redu_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130420041713) do
 
   create_table "alunos_provas", :force => true do |t|
     t.datetime "data_inicio"
+    t.datetime "data_fim"
     t.integer  "alunos_id"
     t.integer  "provas_id"
     t.datetime "created_at",  :null => false
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130420041713) do
   add_index "resposta", ["proposicao_id"], :name => "index_resposta_on_proposicao_id"
 
   create_table "users", :force => true do |t|
+    t.integer  "aluno_id"
     t.string   "email"
     t.string   "login"
     t.string   "name"

@@ -9,15 +9,4 @@ class Aluno < ActiveRecord::Base
     def get_nome
     	return self.user.name
     end
-
-    def get_nome_by_redu_id(redu_id)
-    	nome = nil
-
-    	user = User.find_by_uid(redu_id)
-    	if user != null
-    		nome = user.name
-    	end
-
-		return nome
-    end
 end

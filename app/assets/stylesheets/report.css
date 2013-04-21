@@ -1,0 +1,30 @@
+body {
+	font-family: arial;
+}
+
+footer {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.tempo_prova {
+	float:left;
+	margin-left: 10px;
+	width: 300px;
+}
+
+.data_prova {
+	text-align: right;
+	float: right;
+	margin-right: 10px;
+}
+
+header .logo_redu {
+	margin-top: 20px;
+	margin-right: 20px;
+	float: right;
+}
+
+header .logo {
+	background: url('/assets/logo.png') top no-repeat;
+}

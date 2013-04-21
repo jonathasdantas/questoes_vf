@@ -179,23 +179,37 @@ $(document).ready ->
 				$(":regex(id, #*_texto)")
 			]))
 
-				$(this).data('next-step', '#passo' + next)
-				$('.prev-button').data('next-step', '#passo' + (next - 2))
-				$('.prev-button').show()
+				if next == 4 && $('.questao_li').length == 0
+					alert 'Você precisa adicionar pelo menos uma questão à prova.'
+				else
+					error_proposicao = false
+					$('.questao_li').each (j, eleme) ->
+						if $(eleme).find('.proposicao_li').length == 0
+							error_proposicao = true
 
-				# Mostra o passo correto
-				$('#passo' + (next - 2)).hide()
-				$(step).show()
+					# Verifica se há pelo menos uma proposição em cada questão
+					if next == 4 && error_proposicao
+						alert 'Você precisa adicionar pelo menos uma proposição para cada questão.'
+					else
+						$(this).data('next-step', '#passo' + next)
+						$('.prev-button').data('next-step', '#passo' + (next - 2))
+						$('.prev-button').show()
 
-				# Ajusta BG
-				$('#form_steps nav').css('background-position-y', $(step).data('background-position'))
+						# Mostra o passo correto
+						$('#passo' + (next - 2)).hide()
+						$(step).show()
 
-				# Ultimo passo
-				if next == 4
-					$(this).hide()
-					fill_passo3()
-					$('.questoes_res').treeview({ animated: "fast", collapsed: true, unique: true })
-					$('.submit-button').show()
+						# Ajusta BG
+						$('#form_steps nav').css('background-position-y', $(step).data('background-position'))
+
+						# Ultimo passo
+						if next == 4
+							$(this).hide()
+							fill_passo3()
+							$('.questoes_res').treeview({ animated: "fast", collapsed: true, unique: true })
+							$('.submit-button').show()
+		else
+			alert 'Preencha todos os campos obrigatórios.'
 
 	# Logica do botao voltar
 	$('.prev-button').click ->

@@ -5,7 +5,7 @@
 <fieldset class="grid_filter_container">
   <legend>Informações</legend>
   <div id="grid_filter">
-  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :tempo_restante => @prova.get_end_time(params[:estudante_id]), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
+  	<%= render :partial => "prova_info", :locals => { :duracao => @prova.duracao, :tempo_restante => DateTime.now.to_i(), :disponivel_inicio => @prova.disponivel_data_inicio, :disponivel_fim => @prova.disponivel_data_fim } %>
   </div>
 </fieldset>
 

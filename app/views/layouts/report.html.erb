@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Questões V ou F</title>
+  <%= stylesheet_link_tag    "report", :media => "all" %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "report" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="container">
+		<!-- Cabeçalho -->
+		<header>
+			<img src="/assets/logo.png">
+			<img class="logo_redu" src="/assets/logo_redu.png">
+		</header>
+
+		<!-- Seção Principal -->
+		<section id="main">
+			<%= yield %>
+		</section>
+
+		<!-- Rodape -->
+		<footer>
+			<span>Questões V ou F - Redu Application - Copyright 2013</span>
+		</footer>
+	</div>
+</body>
+</html>

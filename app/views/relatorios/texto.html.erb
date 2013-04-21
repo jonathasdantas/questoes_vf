@@ -1,0 +1,19 @@
+<fieldset>
+	<span class="tempo_prova">
+		<span class="tempo_total">
+			<strong>Tempo total disponível:</strong>
+			<%= @prova.duracao %> mim
+		</span>
+	</span>
+	<span class="data_prova">
+		<strong>Data início:</strong> <%= @prova.disponivel_data_inicio.strftime('%d/%m/%Y %H:%M') %><br />
+		<strong>Data fim:</strong> <%= @prova.disponivel_data_fim.strftime('%d/%m/%Y %H:%M') %>
+	</span>
+</fieldset>
+
+<br />
+
+<span><strong>Número de estudantes matriculados: </strong><%= @num_matriculados %></span><br />
+<span><strong>Número de estudantes que fizeram a prova: </strong><%= @num_fizeram_prova %></span><br />
+<span><strong>Média das notas: </strong><%= @media ||= "?" %> (calculada apenas se a disponibilidade encerrou)</span><br />
+<span><strong>Tempo médio de duração das provas: </strong><%= @tempo_medio %></span><br />

@@ -2,6 +2,7 @@ class CreateAlunosProvas < ActiveRecord::Migration
   def change
     create_table :alunos_provas do |t|
       t.datetime :data_inicio
+      t.datetime :data_fim
       t.references :alunos
       t.references :provas
 

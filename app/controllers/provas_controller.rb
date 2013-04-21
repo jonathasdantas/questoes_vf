@@ -80,11 +80,6 @@ class ProvasController < ApplicationController
 			# Cria o canvas da prova
 			client = client(params[:prova][:disciplina_id])
 			subject = client.create_subject("Prova - " + @prova.titulo)
-			puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" 
-			puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-			puts subject.body
-			puts subject.body['id']
-			puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			client.create_lecture(subject.body['id'], @prova.titulo, QuestoesVf::Application.config.root_url + pre_do_test_path(@prova.id, @session_user.uid, :disciplina => params[:prova][:disciplina_id]))
 
 			redirect_to index_professores_path(params[:prova][:professor_id], :disciplina => params[:prova][:disciplina_id])

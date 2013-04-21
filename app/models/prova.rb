@@ -63,11 +63,38 @@ class Prova < ActiveRecord::Base
         return aluno_prova != nil ? aluno_prova.data_inicio : nil
     end
 
+    def get_data_fim(aluno_id)
+        aluno_prova = AlunosProvas.where('provas_id = ? and alunos_id = ?', self.id, aluno_id).first
+
+        return aluno_prova != nil ? aluno_prova.data_fim : nil
+    end
+
 	def get_media(disciplina_id)
-    	nota = Prova.joins(:questaos).sum("valor")
-    	return nota
+        media = nil
+        valor_media = 0.0
+
+        num = 1;
+
+        if !is_avaliable && !is_editable
+    	   alunos_provas = AlunosProvas.where('provas_id = ? and data_inicio is not null', self.id)
+
+           num = alunos_provas.count
+
+           alunos_provas.each { |aluno_prova|
+                nota = get_nota(aluno_prova.alunos_id, disciplina_id)
+                valor_media = valor_media + nota ||= 0.0
+                media = valor_media
+           }
+        end
+
+        if media != nil
+            media = media / num
+        end
+
+        return media
 	end
 
+    # Segundos para fim da prova
     def get_end_time(aluno_id)
         tempo = DateTime.now.to_i()
 
@@ -89,7 +116,7 @@ class Prova < ActiveRecord::Base
     end
 
     def times_over(aluno_id)
-        return self.get_end_time(aluno_id) <= DateTime.now.to_i()
+        return self.get_end_time(aluno_id) <= DateTime.now.to_i() || self.get_data_fim(aluno_id) != nil
     end
 
     def end_time(aluno_id)
@@ -98,7 +125,7 @@ class Prova < ActiveRecord::Base
         aluno_prova = AlunosProvas.where('provas_id = ? and alunos_id = ?', self.id, aluno_id).first
 
         if aluno_id != nil
-            aluno_prova.data_inicio = aluno_prova.data_inicio - self.duracao.minutes
+            aluno_prova.data_fim = DateTime.now
             retorno = aluno_prova.save
         end
 
