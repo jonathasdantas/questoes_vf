@@ -80,7 +80,7 @@ class ProvasController < ApplicationController
 			# Cria o canvas da prova
 			client = client(params[:prova][:disciplina_id])
 			subject = client.create_subject("Prova - " + @prova.titulo)
-			logger.info(subject.to_json)
+			logger.info(subject)
 			logger.info(subject['id'])
 			#client.create_lecture(subject['id'], @prova.titulo, QuestoesVf::Application.config.root_url + pre_do_test_path(@prova.id, @session_user.uid, :disciplina => params[:prova][:disciplina_id]))
 
