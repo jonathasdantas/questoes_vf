@@ -17,7 +17,7 @@
 		<header>
 			<%= yield :header %>
 			<div id="welcome">
-				<span id="welcome_text">Bem Vindo, A - <%= session[:user_id] %> B - <%= @session_user %> C - @current_user</span><br/>
+				<span id="welcome_text">Bem Vindo, A - <%= session[:user_id] %> B - <%= @session_user.to_json %> C - <%= @current_user%></span><br/>
 				<span id="welcome_time">
 					<strong>Horário Oficial: </strong> <%=	Time.now.strftime("%H:%M:%S") %>
 				</span>
