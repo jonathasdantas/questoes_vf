@@ -102,6 +102,7 @@ class ProvasController < ApplicationController
 
 	def update
 		@prova = Prova.find(params[:id])
+
 	    if @prova.is_editable() && @prova.update_attributes(params[:prova])
 	      redirect_to index_professores_path(params[:prova][:professor_id], :disciplina => params[:prova][:disciplina_id])
 	    else

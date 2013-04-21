@@ -19,7 +19,7 @@
 </p>
 <span><strong>Média das notas: </strong><%= @media ||= "?" %> (calculada apenas se a disponibilidade encerrou)</span><br />
 <p>
-	<span><strong>Tempo médio de duração das provas: </strong><%= @tempo_medio.to_s() + " mim" %></span><br />
+	<span><strong>Tempo médio de duração das provas: </strong><%= @tempo_medio >= 0 ? (@tempo_medio == 0 ? "menos de 1 minuto" : @tempo_medio.to_s() + " mim") : "?" %></span><br />
 	<span><strong>Tempo mínimo de duração das provas: </strong><%= @tempo_min >= 0 ? (@tempo_min == 0 ? "menos de 1 minuto" : @tempo_min.to_s() + " mim") : "?" %></span><br />
 	<span><strong>Tempo máximo de duração das provas: </strong><%= @tempo_max >= 0 ? (@tempo_max == 0 ? "menos de 1 minuto" : @tempo_max.to_s() + " mim") : "?" %></span><br />
 </p>
