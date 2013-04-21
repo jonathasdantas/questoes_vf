@@ -17,7 +17,7 @@
 		<header>
 			<%= yield :header %>
 			<div id="welcome">
-				<span id="welcome_text">Bem Vindo, <%= @Aluno.get_nome_by_redu_id(params[:redu_id]).name %></span><br/>
+				<span id="welcome_text">Bem Vindo, <%= @Aluno.get_nome_by_redu_id(session[:redu_id]).name %></span><br/>
 				<span id="welcome_time">
 					<strong>Horário Oficial: </strong> <%=	Time.now.strftime("%H:%M:%S") %>
 				</span>
