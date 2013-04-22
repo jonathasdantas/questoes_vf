@@ -40,7 +40,6 @@
 					<span>
 						Comentários
 					</span>
-					<span><%= questao.comentarios.count %></span>
 				</div>
 				<div class="comentarios">
 				<%= render :partial => 'comentarios', :locals => {:questao_id => questao.id, :comentarios => questao.get_comentarios()} %>
