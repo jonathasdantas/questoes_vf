@@ -30,13 +30,7 @@ class ProvasController < ApplicationController
 	def pre_do
 		@prova = Prova.find(params[:id])
 
-		if @prova.get_data_inicio(params[:redu_user_id]) != nil && @prova.times_over(params[:redu_user_id])
-			redirect_to prova_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:redu_user_id])
-		end
-
-		if !@prova.times_over(params[:redu_user_id])
-			redirect_to do_test_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:redu_user_id])
-		end
+		
 	end
 
 	def do
