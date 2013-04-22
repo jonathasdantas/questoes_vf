@@ -29,7 +29,7 @@ class ProvasController < ApplicationController
 	# Verifica se a prova já foi feita se foi redireciona para tela show
 	def pre_do
 		@prova = Prova.find(params[:id])
-		params[:estudante_id] = params[:redu_user_id])
+		params[:estudante_id] = params[:redu_user_id]
 
 		if @prova.get_data_inicio(params[:redu_user_id]) != nil && @prova.times_over(params[:redu_user_id])
 			redirect_to prova_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:redu_user_id])
