@@ -30,12 +30,12 @@ class ProvasController < ApplicationController
 	def pre_do
 		@prova = Prova.find(params[:id])
 
-		if @prova.get_data_inicio(params[:estudante_id]) != nil && @prova.times_over(params[:estudante_id])
-			redirect_to prova_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:estudante_id])
+		if @prova.get_data_inicio(params[:user_id]) != nil && @prova.times_over(params[:user_id])
+			redirect_to prova_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:user_id])
 		end
 
-		if !@prova.times_over(params[:estudante_id])
-			redirect_to do_test_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:estudante_id])
+		if !@prova.times_over(params[:user_id])
+			redirect_to do_test_path(@prova, :disciplina => params[:disciplina], :estudante_id => params[:user_id])
 		end
 	end
 
@@ -80,7 +80,7 @@ class ProvasController < ApplicationController
 			# Cria o canvas da prova
 			client = client(params[:prova][:disciplina_id])
 			subject = client.create_subject("Prova - " + @prova.titulo)
-			client.create_lecture(subject.body['id'], @prova.titulo, QuestoesVf::Application.config.root_url + pre_do_test_path(@prova.id, @session_user.uid, :disciplina => params[:prova][:disciplina_id]))
+			client.create_lecture(subject.body['id'], @prova.titulo, QuestoesVf::Application.config.root_url + pre_do_test_path(@prova.id, :disciplina => params[:prova][:disciplina_id]))
 
 			redirect_to index_professores_path(params[:prova][:professor_id], :disciplina => params[:prova][:disciplina_id])
 		else

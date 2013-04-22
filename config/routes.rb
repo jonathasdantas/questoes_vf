@@ -7,8 +7,8 @@ QuestoesVf::Application.routes.draw do
 
   # Prova Routes
   resources :provas, :except => [:index] 
-  match 'provas/:id/pre_do/:estudante_id' => 'provas#pre_do', :via => :get, :as => 'pre_do_test' ## |
-  match 'provas/:id/do/:estudante_id' => 'provas#index', :via => [:post, :get], :as => 'do_test'         ## | INICIAR PROVA -> FAZER PROVA -> ENVIAR PROVA
+  match 'provas/:id/pre_do' => 'provas#pre_do', :via => :get, :as => 'pre_do_test'               ## |
+  match 'provas/:id/do/:estudante_id' => 'provas#index', :via => [:post, :get], :as => 'do_test' ## | INICIAR PROVA -> FAZER PROVA -> ENVIAR PROVA
   match 'provas/:id/do' => 'provas#do', :via => :post, :as => 'submit_do_test'                   ## |
 
   # Estudante Routes
