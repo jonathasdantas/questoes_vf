@@ -29,6 +29,12 @@ class ProvasController < ApplicationController
 	# Verifica se a prova já foi feita se foi redireciona para tela show
 	def pre_do
 		@prova = Prova.find(params[:id])
+		if params[:estudante_id] == nil
+			params[:estudante_id] = params[:redu_user_id]
+		else
+			params[:redu_user_id] = params[:estudante_id]
+		end
+
 		params[:estudante_id] = params[:redu_user_id]
 
 		if @prova.get_data_inicio(params[:redu_user_id]) != nil && @prova.times_over(params[:redu_user_id])
