@@ -34,6 +34,15 @@ class ReduClient
     response.body.count
   end
 
+  def get_user_role()
+    response = connection.get("api/spaces/#{@space_id}/users")
+    response.body.each{ |element|  
+      if element[:role] == "member"
+        puts element[:name]
+      end
+    } 
+  end
+
   def connection
     @conn ||= Faraday.new(:url => 'http://redu.com.br') do |faraday|
       faraday.request  :url_encoded
