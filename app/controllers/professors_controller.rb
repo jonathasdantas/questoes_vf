@@ -17,8 +17,7 @@ class ProfessorsController < ApplicationController
     	@provas_grid = initialize_grid(filtro)
 
     else
-      params[:estudante_id] = params[:professor_id]
-      render "shared/error_permission"
+      redirect_to index_estudantes_path(params[:professor_id], :disciplina => params[:disciplina])
     end
   end
 end
