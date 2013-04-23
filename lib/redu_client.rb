@@ -38,10 +38,13 @@ class ReduClient
     retorno = false
     attrs = { :role => 'member' }
     response = connection.get("api/spaces/#{@space_id}/users", attrs)
-    response.body.each{ |group|  
+    
+    response.body.each do |group|  
       if group["id"] == redu_id
         retorno = true
       end
+    end
+
     retorno 
   end
 
