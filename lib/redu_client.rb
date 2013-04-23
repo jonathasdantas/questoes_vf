@@ -42,6 +42,9 @@ class ReduClient
 
     response.body.each do |group|  
       puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+      puts group
+      puts group["id"]
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
       if group["id"] == redu_id
         puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
