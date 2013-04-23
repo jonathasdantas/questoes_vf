@@ -39,11 +39,10 @@ class ReduClient
 
     response.body.each{ |element|  
       puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-      puts element.role
       puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-      puts element[:role]
+      #puts element[:role]
       puts "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-      puts element["role"]
+      puts "AQUIIIII " + element["role"]
 
       if element[:role] == "member"
         puts element[:name]
