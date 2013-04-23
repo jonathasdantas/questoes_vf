@@ -41,18 +41,7 @@ class ReduClient
     response = connection.get("api/spaces/#{@space_id}/users", attrs)
 
     response.body.each do |group|  
-      puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-      puts group
-      puts group["id"]
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-
-      if group["id"] == redu_id
-        puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        retorno = true
-      end
-
       if group["id"].to_s() == redu_id.to_s()
-        puts "CCCCCCCCCCCCCCCCCCCCCCCCCCCC"
         retorno = true
       end
     end
