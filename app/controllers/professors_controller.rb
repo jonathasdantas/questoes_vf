@@ -1,7 +1,7 @@
 class ProfessorsController < ApplicationController
   def index
     client = client(params[:disciplina])
-    
+
     if !client.is_member(params[:professor_id])
 
     	filtro = Prova.do_professor_disciplina(params[:professor_id], params[:disciplina])
@@ -17,7 +17,7 @@ class ProfessorsController < ApplicationController
     	@provas_grid = initialize_grid(filtro)
 
     else
-      render "error_permission"
+      render "shared/error_permission"
     end
   end
 end
