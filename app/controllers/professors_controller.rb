@@ -17,6 +17,7 @@ class ProfessorsController < ApplicationController
     	@provas_grid = initialize_grid(filtro)
 
     else
+      params[:estudante_id] = params[:professor_id]
       render "shared/error_permission"
     end
   end
