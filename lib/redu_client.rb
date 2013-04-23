@@ -37,16 +37,15 @@ class ReduClient
   def get_user_role()
     response = connection.get("api/spaces/#{@space_id}/users")
 
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     puts response.body.count
 
-    #response.body.each do |element|
-    #  puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    #  puts element
-      #if element[:role] == "member"
-      #  puts element[:name]
-      #end
-    #end
+    response.body.each{ |element|  
+      puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      if element[:role] == "member"
+        puts element[:name]
+      end
+    } 
   end
 
   def connection
