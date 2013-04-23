@@ -12,7 +12,7 @@ class ProfessorsController < ApplicationController
 
   	@provas_grid = initialize_grid(filtro)
 
-    client = client(params[:prova][:disciplina_id])
+    client = client(params[:disciplina])
     client.get_user_role()
   end
 end
