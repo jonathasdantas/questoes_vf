@@ -9,7 +9,15 @@
   </div>
 </fieldset>
 
-<a href="#" class="button-primary submit-button-prova">Finalizar</a>
+<% if @prova.qtd_falsa_para_anular > 0 %>
+<div class="message-block message-warning" style="width: 97%;margin-bottom:20px">
+    <div class="message-block-content">
+        Atenção: Nesta prova, para cada questão, <%= @prova.qtd_falsa_para_anular %> alternativa(s) errada(s) anula(m) <%= @prova.qtd_verdadeira_anula %> alternativa(s) correta(s).
+    </div>
+</div>
+<% end %>
+
+<a href="#" class="button-primary submit-button-prova" style="margin-right:0px">Finalizar</a>
 
 <fieldset class="prova_container">
 	<legend><%= @prova.titulo  %></legend>

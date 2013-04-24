@@ -1,7 +1,7 @@
 # encoding: utf-8
 class EstudantesController < ApplicationController
   def index
-  	filtro = Prova.da_disciplina(params[:disciplina])
+  	filtro = Prova.da_disciplina(params[:disciplina]).order("updated_at DESC")
 
     if params[:antigas]
     		filtro = filtro.excluir_antigas

@@ -1,10 +1,10 @@
 class ProfessorsController < ApplicationController
   def index
-    client = client(params[:disciplina])
+    #client = client(params[:disciplina])
 
     if !client.is_member(params[:professor_id])
 
-    	filtro = Prova.do_professor_disciplina(params[:professor_id], params[:disciplina])
+    	filtro = Prova.do_professor_disciplina(params[:professor_id], params[:disciplina]).order("updated_at DESC")
 
       if params[:antigas]
       		filtro = filtro.excluir_antigas

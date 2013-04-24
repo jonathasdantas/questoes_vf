@@ -28,6 +28,8 @@ class Prova < ActiveRecord::Base
             questoes = Questao.where("prova_id = ?", self.id)
 
             questoes.each { |questao|
+                erradas = 0
+
                 valor_prova = valor_prova + questao.valor
 
                 proposicoes = Proposicao.where("questao_id = ?", questao.id)
@@ -37,15 +39,27 @@ class Prova < ActiveRecord::Base
                 proposicoes.each { |proposicao|
                     resposta = Resposta.where("proposicao_id = ? and aluno_id = ?", proposicao.id, aluno_id).first
 
+                    if resposta != nil && resposta.resposta != proposicao.resposta
+                        erradas += 1
+                        nota = nota_valor;
+                    end
+
                     if resposta != nil && resposta.resposta == proposicao.resposta
                         nota_valor = nota_valor + valor_prop
                         nota = nota_valor
                     end
                     
-                    if resposta != nil && resposta.resposta != proposicao.resposta
-                        nota = nota_valor;
+                    if erradas == self.qtd_falsa_para_anular && self.qtd_falsa_para_anular > 0
+                        nota_valor = nota_valor - (valor_prop * self.qtd_verdadeira_anula)
+                        nota = nota_valor
+                        erradas = 0
                     end
                 }
+
+                if nota && nota < 0
+                    nota = 0
+                    nota_valor = 0
+                end
             }
         end
 
