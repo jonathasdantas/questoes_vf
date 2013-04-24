@@ -1,6 +1,6 @@
 class ProfessorsController < ApplicationController
   def index
-    #client = client(params[:disciplina])
+    client = client(params[:disciplina])
 
     if !client.is_member(params[:professor_id])
 
